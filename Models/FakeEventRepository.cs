@@ -18,7 +18,7 @@ public class FakeEventRepository
         events.Add(new Event()
         {
             Name = "Fodbold", Price = 10, Location = "Roskilde", Time = new DateTime(2024, 6, 20, 16, 0, 0),
-            Description = "Musik og ting"
+            Description = "Fodbold og ting"
         });
 
     }
