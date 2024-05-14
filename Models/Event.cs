@@ -4,11 +4,11 @@ namespace ZealandZooEvent.Models
 {
     public class Event
     {
-        private string Location { get; set; }
-        private double Price { get; set; }
-        private string Name { get; set; }
-        private string Description { get; set; }
-        private DateTime Time { get; set; }
+        public string Location { get; set; }
+        public double Price { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public DateTime Time { get; set; }
 
 
     }
