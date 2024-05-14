@@ -8,7 +8,7 @@ public class CreateEvent : PageModel
 {
     private FakeEventRepository repo;
 
-    [BindProperty] public Event Event { get; set }
+    [BindProperty] public Event Event { get; set; }
 
     public CreateEvent()
     {
@@ -21,6 +21,8 @@ public class CreateEvent : PageModel
     }
 
     public IActionResult OnPost()
-}
-
-}
+    {
+        repo.AddEvent(Event);
+        return RedirectToPage("Index");
+    } 
+}     
