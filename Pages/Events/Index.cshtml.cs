@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
+using ZealandZooEvent.Models;
 
 namespace ZealandZooEvent.Pages.Events
 {
@@ -12,7 +13,7 @@ namespace ZealandZooEvent.Pages.Events
 
         public IndexModel()
         {
-            repo = new FakeEventRepository;
+            repo = new FakeEventRepository();
         }
         public void OnGet()
         {
