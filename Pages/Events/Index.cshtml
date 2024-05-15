@@ -44,6 +44,9 @@
                 <td>
                     @item.Price
                 </td>
+                <td>
+                    <a asp-page="EditEvent" asp-route-id="@item.Id"> Edit</a>
+                </td>
             </tr>
         }
     </tbody>

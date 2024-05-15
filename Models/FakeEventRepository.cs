@@ -39,5 +39,23 @@ public class FakeEventRepository
         }
         return new Event();
     }
+    public void UpdateEvent(Event @evt)
+    {
+        if (@evt != null)
+        {
+            foreach (var e in GetAllEvents())
+            {
+                if (e.Id == @evt.Id)
+                {
+                    e.Id = evt.Id;
+                    e.Name = evt.Name;
+                    e.Price = evt.Price;
+                    e.Description = evt.Description;
+                    e.Time = evt.Time;
+                    e.Location = evt.Location;
+                }
+            }
+        }
+    }
 
 }  

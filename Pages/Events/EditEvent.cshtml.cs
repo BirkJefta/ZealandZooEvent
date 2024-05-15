@@ -7,6 +7,8 @@ namespace ZealandZooEvent.Pages.Events
     public class EditEventModel : PageModel
     {
         private FakeEventRepository repo;
+
+        [BindProperty]
         public Event Event { get; set; }
         public EditEventModel() 
         { 
@@ -19,7 +21,12 @@ namespace ZealandZooEvent.Pages.Events
         }
         public IActionResult OnPost()
         {
-
+            if (!ModelState.IsValid )
+            {
+                return Page();
+            }
+            repo.UpdateEvent(Event);
+            return RedirectToPage("Index");
         }
     }
 }

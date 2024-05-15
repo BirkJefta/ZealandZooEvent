@@ -6,3 +6,32 @@
 <h1>
     EditEvent
 </h1>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden"asp-for="@Model.Event.Id" />
+            <div class ="form-group">
+                <label asp-for="@Model.Event.Name" class="control-label"></label>
+                <input asp-for="@Model.Event.Name" class="form-control" />
+                <span asp-validation-for="@Model.Event.Name" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="@Model.Event.Location" class="control-label"></label>
+                <input asp-for="@Model.Event.Location" class="form-control" />
+                <span asp-validation-for="@Model.Event.Location" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="@Model.Event.Time" class="control-label"></label>
+                <input asp-for="@Model.Event.Time" class="form-control" />
+                <span asp-validation-for="@Model.Event.Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-page="index">Back to list</a>
+</div>
