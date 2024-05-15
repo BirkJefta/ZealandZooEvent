@@ -6,8 +6,9 @@ namespace ZealandZooEvent.Models;
 public class FakeEventRepository
 {
     private List<Event> events { get; }
+    private static FakeEventRepository _instance;
 
-    public FakeEventRepository()
+    private FakeEventRepository()
     {
         events = new List<Event>();
         events.Add(new Event()
@@ -21,6 +22,19 @@ public class FakeEventRepository
             Description = "Fodbold og ting"
         });
 
+    }
+    public static FakeEventRepository Instance
+    {
+        get 
+        { 
+            if (_instance == null)
+            {
+                _instance = new FakeEventRepository();
+            }
+            return _instance;
+        }
+
+        
     }
 
     public List<Event> GetAllEvents()

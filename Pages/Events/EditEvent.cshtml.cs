@@ -12,7 +12,7 @@ namespace ZealandZooEvent.Pages.Events
         public Event Event { get; set; }
         public EditEventModel() 
         { 
-            repo = new FakeEventRepository();
+            repo = FakeEventRepository.Instance;
         }
         public IActionResult OnGet(int id)
         {
