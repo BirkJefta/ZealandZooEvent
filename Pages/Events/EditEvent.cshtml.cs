@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ZealandZooEvent.Interfaces;
 using ZealandZooEvent.Models;
 using ZealandZooEvent.Services;
 
@@ -7,13 +8,13 @@ namespace ZealandZooEvent.Pages.Events
 {
     public class EditEventModel : PageModel
     {
-        private FakeEventRepository repo;
+        IRepository repo;
 
         [BindProperty]
         public Event Event { get; set; }
-        public EditEventModel() 
-        { 
-            repo = FakeEventRepository.Instance;
+        public EditEventModel(IRepository repository) 
+        {
+            repo = repository;
         }
         public IActionResult OnGet(int id)
         {

@@ -1,15 +1,16 @@
 using System;
 using System.Collections.Generic;
+using ZealandZooEvent.Interfaces;
 using ZealandZooEvent.Models;
 
 namespace ZealandZooEvent.Services;
 
-public class FakeEventRepository
+public class FakeEventRepository : IRepository
 {
     private List<Event> events { get; }
-    private static FakeEventRepository _instance;
+    
 
-    private FakeEventRepository()
+    public FakeEventRepository()
     {
         events = new List<Event>();
         events.Add(new Event()
@@ -32,19 +33,8 @@ public class FakeEventRepository
         });
 
     }
-    public static FakeEventRepository Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new FakeEventRepository();
-            }
-            return _instance;
-        }
 
-
-    }
+    
 
     public List<Event> GetAllEvents()
     {

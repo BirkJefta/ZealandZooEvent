@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ZealandZooEvent.Interfaces;
+using ZealandZooEvent.Services;
 
 namespace ZealandZooEvent {
     public class Startup {
@@ -22,6 +24,7 @@ namespace ZealandZooEvent {
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddSingleton<IRepository, FakeEventRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
