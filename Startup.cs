@@ -24,7 +24,8 @@ namespace ZealandZooEvent {
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddSingleton<IRepository, FakeEventRepository>();
+            //services.AddSingleton<IRepository, FakeEventRepository>();
+            services.AddTransient<IRepository, JsonEventRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

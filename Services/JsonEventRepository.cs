@@ -28,7 +28,7 @@ namespace ZealandZooEvent.Services {
             List<Event> @events = GetAllEvents().ToList();
             if (@evt != null)
             {
-                foreach (var e in GetAllEvents())
+                foreach (var e in @events)
                 {
                     if (e.Id == @evt.Id)
                     {

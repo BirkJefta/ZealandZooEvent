@@ -1,18 +1,18 @@
 [
   {
-    "Id": 1,
-    "Name": "Zealand Festival",
-    "Price": 100,
     "Location": "Roskilde",
-    "Time": "2024-05-17T16:00:00",
-    "Description": "Musik og ting"
+    "Id": 1,
+    "Price": 100,
+    "Name": "Zealand Festival",
+    "Description": "Musik og ting",
+    "Time": "2024-05-17T16:00:00"
   },
   {
-    "Id": 2,
-    "Name": "Fodbold",
-    "Price": 10,
     "Location": "Roskilde",
-    "Time": "2024-06-20T16:00:00",
-    "Description": "Fodbold og ting"
+    "Id": 2,
+    "Price": 10,
+    "Name": "Fodbold",
+    "Description": "Fodbold og ting",
+    "Time": "2024-06-20T16:00:00"
   }
 ]
