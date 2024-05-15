@@ -1,15 +1,23 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ZealandZooEvent.Models
 {
     public class Event
     {
-
+        [Required(ErrorMessage = "Locations is required")]
         public string Location { get; set; }
         public int Id { get; set; }
         public double Price { get; set; }
+
+        [Display(Name = "Event Name")]
+        [Required(ErrorMessage = "Event name is required")]
         public string Name { get; set; }
+        
         public string Description { get; set; }
+        [Required(ErrorMessage ="Date is required")]
+        [Range(typeof(DateTime),"1/1/2024","10/1/2100",ErrorMessage ="Value must be between {1} and {2}")]
+
         public DateTime Time { get; set; }
 
 

@@ -26,7 +26,18 @@ public class FakeEventRepository
     public List<Event> GetAllEvents()
     {
         return events;
-        
+    }
+
+    public Event GetEvent(int id)
+    {
+        foreach (var v in GetAllEvents())
+        {
+            if (v.Id == id)
+            {
+                return v;
+            }
+        }
+        return new Event();
     }
 
 }  
