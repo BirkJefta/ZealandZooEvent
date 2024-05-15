@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooEvent.Models;
+using ZealandZooEvent.Services;
 
 namespace ZealandZooEvent.Pages.Events
 {
