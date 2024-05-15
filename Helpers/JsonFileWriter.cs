@@ -5,7 +5,7 @@ using ZealandZooEvent.Models;
 
 namespace ZealandZooEvent.Helpers {
     public class JsonFileWriter {
-        public static void WriteToJson(List<Event>events,string jsonFileName)
+        public static void WriteToJson(List<Event>@events,string jsonFileName)
         {
             using (FileStream outputStream = File.OpenWrite(jsonFileName))
             {

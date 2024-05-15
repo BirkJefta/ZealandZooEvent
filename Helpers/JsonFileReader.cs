@@ -7,9 +7,9 @@ namespace ZealandZooEvent.Helpers {
     public class JsonFileReader {
         public static List<Event>ReadToJson(string JsonFileName)
         {
-            using(var jsonFilReader = File.OpenText(JsonFileName))
+            using(var jsonFileReader = File.OpenText(JsonFileName))
             {
-                return JsonSerializer.Deserialize<List<Event>>(jsonFilReader.ReadToEnd());
+                return JsonSerializer.Deserialize<List<Event>>(jsonFileReader.ReadToEnd());
             }
         }
     }
