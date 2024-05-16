@@ -7,7 +7,7 @@ using ZealandZooEvent.Models;
 namespace ZealandZooEvent.Services {
     public class JsonEventRepository:IRepository
     {
-        string JsonFileName = @"Data\JsonEvents.json";
+        string JsonFileName = @"Data/JsonEvents.json";
         public List<Event> GetAllEvents()
         {
             return JsonFileReader.ReadToJson(JsonFileName);
