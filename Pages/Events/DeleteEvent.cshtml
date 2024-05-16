@@ -2,10 +2,8 @@
 @model ZealandZooEvent.Pages.Events.DeleteEvent
 
 @{
-    Layout = null;
+ViewData["Title"] = "CreateEvent";
 }
-
-
 
 <h1>DeleteEvent</h1>
 <h3>Are you sure you want to delete this?</h3>
@@ -41,7 +39,7 @@
         <input type="submit" value="Delete" class="btn btn-danger" />
     </form>
     <div>
-        <a asp-page="GetAllPizzas">Back to List</a>
+        <a asp-page="Index">Back to List</a>
     </div>
 </div>
 
