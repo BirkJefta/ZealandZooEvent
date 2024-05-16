@@ -10,6 +10,7 @@
             <div class="form-group">
                 <label asp-for="@Model.Event.Name" class="control-label"></label>
                 <input asp-for="@Model.Event.Name" class="form-control" />
+                <span asp-validation-for="@Model.Event.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.Event.Description" class="control-label"></label>
@@ -18,13 +19,20 @@
             <div class="form-group">
                 <label asp-for="@Model.Event.Location" class="control-label"></label>
                 <input asp-for="@Model.Event.Location" class="form-control" />
+                <span asp-validation-for="@Model.Event.Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Event.Price" class="control-label"></label>
+                <input asp-for="@Model.Event.Price" class="form-control" />
+                <span asp-validation-for="@Model.Event.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="@Model.Event.Time" class="control-label"></label>
                 <input asp-for="@Model.Event.Time" class="form-control" />
-            </div>         
+                <span asp-validation-for="@Model.Event.Time" class="text-danger"></span>
+            </div>
             <div class="form-group>">
-                <input type="submit" value="Create" class="btn bnt-primary" />
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
         </form>
     </div>

@@ -7,5 +7,6 @@ namespace ZealandZooEvent.Interfaces {
         Event GetEvent(int id);
         void UpdateEvent(Event ev);
         void AddEvent(Event ev);
+        List<Event> FilterEvents(string EventName);
     }
 }
