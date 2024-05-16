@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ZealandZooEvent.Interfaces;
 using ZealandZooEvent.Models;
 using ZealandZooEvent.Services;
 
@@ -7,13 +8,13 @@ namespace ZealandZooEvent.Pages.Events;
 
 public class CreateEvent : PageModel
 {
-    private FakeEventRepository repo;
+    private IRepository repo;
 
     [BindProperty] public Event Event { get; set; }
 
-    public CreateEvent()
+    public CreateEvent(IRepository repository)
     {
-        repo = new FakeEventRepository();
+        repo = repository;
     }
 
     public IActionResult OnGet()
@@ -23,6 +24,10 @@ public class CreateEvent : PageModel
 
     public IActionResult OnPost()
     {
+        if (!ModelState.IsValid)
+        {
+            return Page();
+        }
         repo.AddEvent(Event);
         return RedirectToPage("Index");
     } 
