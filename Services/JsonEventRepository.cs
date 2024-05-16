@@ -96,6 +96,18 @@ namespace ZealandZooEvent.Services
             JsonFileWriter.WriteToJson(@events, JsonFileName);
 
         }
+        public List<Event> FilterEvents(string eventName)
+        {
+            List<Event>FilteredList = new List<Event>();
+            foreach (var ev in GetAllEvents())
+            {
+                if(ev.Name.Contains(eventName))
+                {
+                    FilteredList.Add(ev);
+                }
+            }
+            return FilteredList;
+        }
 
 
     }
