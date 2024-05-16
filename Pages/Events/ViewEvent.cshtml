@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
     <div class="d-flex justify-content-end mb-2">
-        <button class="btn btn-sm btn-outline-primary mr-2">Edit Event</button>
-        <button class="btn btn-sm btn-outline-danger">Delete Event</button>
+        <a asp-page="EditEvent" asp-route-id="@Model.Event.Id" class="btn btn-sm btn-outline-primary">Edit Event</a>
+        <a asp-page="DeleteEvent" asp-route-id="@Model.Event.Id" class="btn btn-sm btn-outline-danger">Delete Event</a>
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -35,6 +35,11 @@
             <div class="card">
                 <h5 class="card-header">Information</h5>
                 <div class="card-body">
+                    <h5>
+                        <i class="fa fa-id-badge">
+                           Event: @Model.Event.Name
+                        </i>
+                    </h5>
                     <h5>
                         <i class="fa fa-clock-o">
                             Time: @Model.Event.Time
