@@ -44,6 +44,7 @@ namespace ZealandZooEvent.Services
                         e.Description = evt.Description;
                         e.Time = evt.Time;
                         e.Location = evt.Location;
+                        e.PictureUrl = evt.PictureUrl;
                     }
                 }
             }
