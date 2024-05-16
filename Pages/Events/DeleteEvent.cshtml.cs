@@ -17,8 +17,9 @@ public class DeleteEvent : PageModel
         repo = repository;
     }
 
-    public IActionResult OnGet()
+    public IActionResult OnGet(int id)
     {
+        Event = repo.GetEvent(id);
         return Page();
     }
 
@@ -29,6 +30,7 @@ public class DeleteEvent : PageModel
             return Page();
         }
         repo.RemoveEvent(Event);
+        repo.UpdateEvent(Event);
         return RedirectToPage("Index");
     } 
 
