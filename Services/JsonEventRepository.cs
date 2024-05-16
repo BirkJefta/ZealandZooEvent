@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Linq;
 using ZealandZooEvent.Helpers;
 using ZealandZooEvent.Interfaces;
@@ -73,29 +74,24 @@ namespace ZealandZooEvent.Services
             JsonFileWriter.WriteToJson(@events, JsonFileName);
         }
 
-        public void RemoveEvent(Event ev)
+        public void DeleteEvent(Event ev)
         {
-            List<Event> @events = GetAllEvents().ToList();
-            List<int> eventIds = new List<int>();
-            foreach (var evt in events)
+            List<Event> events = GetAllEvents().ToList();
+
+            // Use reverse loop to avoid issues with modifying the collection while iterating
+            for (int i = events.Count - 1; i >= 0; i--)
             {
-                eventIds.Remove(evt.Id);
-            }
-            
-            if (eventIds.Count != 0)
-            {
-                int start = eventIds.Max();
-                ev.Id = start + 1;
-            }
-            else
-            {
-                ev.Id = 1;
+                if (ev.Id == events[i].Id)
+                {
+                    events.RemoveAt(i);
+                }
             }
 
-            events.Remove(ev);
-            JsonFileWriter.WriteToJson(@events, JsonFileName);
-
+            JsonFileWriter.WriteToJson(events, JsonFileName);
         }
+
+
+
         public List<Event> FilterEvents(string eventName)
         {
             List<Event>FilteredList = new List<Event>();

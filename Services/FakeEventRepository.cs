@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ZealandZooEvent.Helpers;
 using ZealandZooEvent.Interfaces;
 using ZealandZooEvent.Models;
 
@@ -91,6 +92,21 @@ public class FakeEventRepository : IRepository
         }
         events.Add(ev);
     }
+    public void DeleteEvent(Event ev)
+    {
+        List<Event> events = GetAllEvents().ToList();
+
+        // Use reverse loop to avoid issues with modifying the collection while iterating
+        for (int i = events.Count - 1; i >= 0; i--)
+        {
+            if (ev.Id == events[i].Id)
+            {
+                events.RemoveAt(i);
+            }
+        }
+
+    }
+
     public List<Event> FilterEvents(string eventName)
     {
         List<Event> FilteredList = new List<Event>();
