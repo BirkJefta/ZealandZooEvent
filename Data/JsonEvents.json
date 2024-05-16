@@ -1,18 +1,1 @@
-[
-  {
-    "Location": "Viby",
-    "Id": 1,
-    "Price": 100,
-    "Name": "Zealand Festival!",
-    "Description": "Musik og ting",
-    "Time": "2024-05-17T16:00:00"
-  },
-  {
-    "Location": "Roskilde",
-    "Id": 2,
-    "Price": 10,
-    "Name": "Fodbold",
-    "Description": "Fodbold og ting",
-    "Time": "2024-06-20T16:00:00"
-  }
-]
+[{"Location":"Viby","Id":1,"Price":100,"Name":"Zealand Festival!","Description":"Musik og ting","Time":"2024-05-17T16:00:00"},{"Location":"Roskilde","Id":2,"Price":109,"Name":"Fodbold","Description":"Fodbold og ting","Time":"2024-06-20T16:00:00"}]

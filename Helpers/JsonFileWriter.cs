@@ -5,17 +5,16 @@ using ZealandZooEvent.Models;
 
 namespace ZealandZooEvent.Helpers {
     public class JsonFileWriter {
-        public static void WriteToJson(List<Event>@events,string jsonFileName)
+        public static void WriteToJson(List<Event>events,string jsonFileName)
         {
-            using (FileStream outputStream = File.OpenWrite(jsonFileName))
-            {
-                var writer = new Utf8JsonWriter(outputStream, new JsonWriterOptions
-                {
-                    SkipValidation = false,
-                    Indented = true
-                });
-                JsonSerializer.Serialize<Event[]>(writer,@events.ToArray());
-            }
+            
+                string json = JsonSerializer.Serialize(events);
+
+                File.WriteAllText(jsonFileName, json);
+
+            
+
+
         }
     }
 }
