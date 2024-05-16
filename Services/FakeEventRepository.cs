@@ -91,6 +91,19 @@ public class FakeEventRepository : IRepository
         }
         events.Add(ev);
     }
+    public List<Event> FilterEvents(string eventName)
+    {
+        List<Event> FilteredList = new List<Event>();
+        foreach (var ev in GetAllEvents())
+        {
+            if (ev.Name.Contains(eventName))
+            {
+                FilteredList.Add(ev);
+            }
+        }
+        return FilteredList;
+    }
+
 
 
 }
