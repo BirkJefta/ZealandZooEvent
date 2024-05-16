@@ -9,7 +9,7 @@ namespace ZealandZooEvent.Services;
 public class FakeEventRepository : IRepository
 {
     private List<Event> events { get; }
-    
+
 
     public FakeEventRepository()
     {
@@ -35,7 +35,7 @@ public class FakeEventRepository : IRepository
 
     }
 
-    
+
 
     public List<Event> GetAllEvents()
     {
@@ -51,8 +51,10 @@ public class FakeEventRepository : IRepository
                 return v;
             }
         }
+
         return new Event();
     }
+
     public void UpdateEvent(Event @evt)
     {
         if (@evt != null)
@@ -71,7 +73,7 @@ public class FakeEventRepository : IRepository
             }
         }
     }
-    
+
     public void AddEvent(Event ev)
     {
         List<int> eventIds = new List<int>();
@@ -83,14 +85,36 @@ public class FakeEventRepository : IRepository
         if (eventIds.Count != 0)
         {
             int start = eventIds.Max();
-            ev.Id = start + 1; 
+            ev.Id = start + 1;
         }
         else
         {
-            ev.Id = 1; 
+            ev.Id = 1;
         }
+
         events.Add(ev);
     }
 
+    public void RemoveEvent(Event ev)
+    {
+        List<Event> @events = GetAllEvents().ToList();
+        List<int> eventIds = new List<int>();
+        foreach (var evt in events)
+        {
+            eventIds.Remove(evt.Id);
+        }
+
+        if (eventIds.Count != 0)
+        {
+            int start = eventIds.Max();
+            ev.Id = start + 1;
+        }
+        else
+        {
+            ev.Id = 1;
+        }
+
+        events.Remove(ev);
+    }
 
 }

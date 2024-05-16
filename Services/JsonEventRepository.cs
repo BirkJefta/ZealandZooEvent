@@ -73,5 +73,29 @@ namespace ZealandZooEvent.Services
             JsonFileWriter.WriteToJson(@events, JsonFileName);
         }
 
+        public void RemoveEvent(Event ev)
+        {
+            List<Event> @events = GetAllEvents().ToList();
+            List<int> eventIds = new List<int>();
+            foreach (var evt in events)
+            {
+                eventIds.Remove(evt.Id);
+            }
+            
+            if (eventIds.Count != 0)
+            {
+                int start = eventIds.Max();
+                ev.Id = start + 1;
+            }
+            else
+            {
+                ev.Id = 1;
+            }
+
+            events.Remove(ev);
+            JsonFileWriter.WriteToJson(@events, JsonFileName);
+
+        }
+
     }
 }
