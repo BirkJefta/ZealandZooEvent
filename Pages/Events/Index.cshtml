@@ -3,58 +3,72 @@
 @{
     ViewData["Title"] = "Index";
 }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container">
+    <h1>Events</h1>
+    <div class="d-flex justify-content-between">
+        <a asp-page="CreateEvent">
+            <button class="btn-success" style="font-size:12px">
+                Create new <i class="fa fa-plus"></i>
+            </button>
+            </a>
+        <form class="form-inline my-2 my-lg-0" method="post">
+            <div class="input-group">
+                <input type="text" class="form-control" asp-for="FilterCriteria" placeholder="Search Name">
+                <div class="input-group-append">
+                    <button class="btn-primary" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 
-<h1>Index</h1>
-<a asp-page="CreateEvent">Create Event</a>
- <form method="post">
-     <p>
-         Search: <input type="text" asp-for="FilterCriteria" />
-         <input type="submit" value="Filter" />
-     </p>
-</form>
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Location
-        </th>
-        <th>
-            Time
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            Price
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach(var item in Model.Events)
-    {
+    <table class="table">
+        <thead>
         <tr>
-            <td>
-                @item.Name
-            </td>
-            <td>
-                @item.Location
-            </td>
-            <td>
-                @item.Time
-            </td>
-            <td>
-                @item.Description
-            </td>
-            <td>
-                @item.Price
-            </td>
-            <td>
-                <a asp-page="EditEvent" asp-route-id="@item.Id"> Edit</a>
-            </td>
+            <th>
+                Name
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Price
+            </th>
         </tr>
-    }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        @foreach(var item in Model.Events)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Location
+                </td>
+                <td>
+                    @item.Time
+                </td>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    <a asp-page="EditEvent" asp-route-id="@item.Id"> Edit</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
