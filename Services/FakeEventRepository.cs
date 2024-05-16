@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using ZealandZooEvent.Interfaces;
 using ZealandZooEvent.Models;
 
@@ -70,5 +71,26 @@ public class FakeEventRepository : IRepository
             }
         }
     }
+    
+    public void AddEvent(Event ev)
+    {
+        List<int> eventIds = new List<int>();
+        foreach (var evt in events)
+        {
+            eventIds.Add(evt.Id);
+        }
+
+        if (eventIds.Count != 0)
+        {
+            int start = eventIds.Max();
+            ev.Id = start + 1; 
+        }
+        else
+        {
+            ev.Id = 1; 
+        }
+        events.Add(ev);
+    }
+
 
 }
