@@ -99,14 +99,23 @@ namespace ZealandZooEvent.Services
         public List<Event> FilterEvents(string eventName)
         {
             List<Event>FilteredList = new List<Event>();
-            foreach (var ev in GetAllEvents())
+            List<Event>@events = GetAllEvents().ToList();
+            string lowerEventName = eventName.ToLower();
+            foreach (var ev in @events)
             {
-                if(ev.Name.Contains(eventName))
+                if(ev.Name.ToLower().Contains(lowerEventName))
                 {
                     FilteredList.Add(ev);
                 }
             }
-            return FilteredList;
+            if (eventName != null)
+            {
+                return FilteredList;
+            }
+            else
+            {
+                return @events;
+            }
         }
 
 

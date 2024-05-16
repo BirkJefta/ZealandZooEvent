@@ -28,6 +28,10 @@ namespace ZealandZooEvent.Pages.Events
             {
                 Events = repo.FilterEvents(FilterCriteria);
             }
+            else
+            {
+                Events = repo.GetAllEvents();
+            }
         }
     }
 }
