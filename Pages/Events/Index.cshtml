@@ -6,6 +6,12 @@
 
 <h1>Index</h1>
 <a asp-page="CreateEvent">Create Event</a>
+ <form methhod="post">
+     <p>
+         Search: <input type="text" asp-for="FilterCriteria" />
+         <input type="submit" value="Filter" />
+     </p>
+</form>
 <table class="table">
     <thead>
     <tr>
