@@ -1,0 +1,66 @@
+﻿@page "{Id:min(1)}"
+@model ZealandZooEvent.Pages.Events.ViewEventModel
+@{
+    ViewData["Title"] = "ViewEvent";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container">
+    <div class="d-flex justify-content-end mb-2">
+        <a asp-page="EditEvent" asp-route-id="@Model.Event.Id" class="btn btn-sm btn-outline-primary">Edit Event</a>
+        <a asp-page="DeleteEvent" asp-route-id="@Model.Event.Id" class="btn btn-sm btn-outline-danger">Delete Event</a>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@Model.Event.PictureUrl" alt="Event Picture" class="img-fluid w-100 h-auto">
+        </div>
+        <div class="col-md-6">
+            <div class="container">
+                <h5 class="card-header">About the event</h5>
+                <div class="card">
+                    <div class="card-body">
+                        @Model.Event.Description
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-6" style="margin-top:20px">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success btn-lg">Tilmeld</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="card">
+                <h5 class="card-header">Information</h5>
+                <div class="card-body">
+                    <h5>
+                        <i class="fa fa-id-badge">
+                           Event: @Model.Event.Name
+                        </i>
+                    </h5>
+                    <h5>
+                        <i class="fa fa-clock-o">
+                            Time: @Model.Event.Time
+                        </i>
+                    </h5>
+                    <h5>
+                        <i class="fa fa-location-arrow">
+                            Location: @Model.Event.Location
+                        </i>
+                    </h5>
+                    <h5>
+                        <i class="fa fa-money">
+                            Price: @Model.Event.Price Dkk
+                        </i>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+

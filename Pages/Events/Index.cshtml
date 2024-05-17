@@ -67,10 +67,7 @@
                     @item.Price
                 </td>
                 <td>
-                    <a asp-page="EditEvent" asp-route-id="@item.Id"> Edit</a>
-                </td>
-                <td>
-                    <a asp-page="DeleteEvent" asp-route-id="@item.Id"> Delete</a>
+                        <a asp-page="ViewEvent" asp-route-id="@item.Id" class="btn btn-primary btn-sm rounded">  View </a>
                 </td>
             </tr>
         }
