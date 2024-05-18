@@ -12,9 +12,10 @@ namespace ZealandZooEvent.Pages {
     public class IndexModel : PageModel {
         private readonly ILogger<IndexModel> _logger;
         private readonly IRepository _repository;
-        
+
         [BindProperty]
         public List<Event> Events { get; set; }
+
 
         public IndexModel(ILogger<IndexModel> logger, IRepository repository)
         {
