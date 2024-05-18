@@ -11,7 +11,7 @@
         background-color:black;
     }
 
-    tbody {
+    tbody, td,a {
         color: white;
     }
     thead{
@@ -70,7 +70,7 @@
                     {
                         <tr>
                             <td>
-                                @item.Name
+                            <a asp-page="ViewEvent" asp-route-id="@item.Id"> @item.Name </a>
                             </td>
                             <td>
                                 @item.Location
@@ -85,7 +85,7 @@
                                 @item.Price
                             </td>
                             <td>
-                                    <a asp-page="ViewEvent" asp-route-id="@item.Id" class="btn btn-primary btn-sm rounded">  View </a>
+                            
                             </td>
                         </tr>
                     }
