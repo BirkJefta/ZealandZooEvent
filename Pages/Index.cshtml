@@ -5,6 +5,33 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome To Zealand Zoo!!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome To Zealand Zoo</h1>
+</div>
+<style>
+    /* Set a fixed height for the images */
+    .carousel-item img {
+        height: 400px; /* Adjust the height as needed */
+        width: auto; /* Ensure the width adjusts proportionally */
+        object-fit: cover; /* Maintain aspect ratio and fill the space */
+    }
+</style>
+<div class="container-fluid" >
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="3000">
+        <div class="carousel-inner">
+            @if (Model.Events != null && Model.Events.Count > 0)
+            {
+                for (int i = 0; i < Model.Events.Count; i++)
+                {
+                    var eventItem = Model.Events[i];
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <img class="d-block w-100 img-fluid" src="@eventItem.PictureUrl" alt="@eventItem.Name">
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No events available.</p>
+            }
+        </div>
+    </div>
 </div>
