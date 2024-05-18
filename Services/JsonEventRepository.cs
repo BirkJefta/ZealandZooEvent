@@ -38,12 +38,16 @@ public class JsonEventRepository : IRepository
             {
                 if (e.Id == @evt.Id)
                 {
-                    e.Id = evt.Id;
-                    e.Name = evt.Name;
-                    e.Price = evt.Price;
-                    e.Description = evt.Description;
-                    e.Time = evt.Time;
-                    e.Location = evt.Location;
+                    if (e.Id == @evt.Id)
+                    {
+                        e.Id = evt.Id;
+                        e.Name = evt.Name;
+                        e.Price = evt.Price;
+                        e.Description = evt.Description;
+                        e.Time = evt.Time;
+                        e.Location = evt.Location;
+                        e.PictureUrl = evt.PictureUrl;
+                    }
                 }
             }
         }

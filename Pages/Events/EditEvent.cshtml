@@ -22,11 +22,6 @@
                 <span asp-validation-for="@Model.Event.Location" class="text-danger"></span>
             </div>
             <div>
-                <label asp-for="@Model.Event.Time" class="control-label"></label>
-                <input asp-for="@Model.Event.Time" class="form-control" />
-                <span asp-validation-for="@Model.Event.Time" class="text-danger"></span>
-            </div>
-            <div>
                 <label asp-for="@Model.Event.Price" class="control-label"></label>
                 <input asp-for="@Model.Event.Price" class="form-control" />
                 <span asp-validation-for="@Model.Event.Price" class="text-danger"></span>
@@ -37,11 +32,23 @@
                 <span asp-validation-for="@Model.Event.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="@Model.Event.PictureUrl" class="control-label"></label>
+                <input asp-for="@Model.Event.PictureUrl" class="form-control" />
+                <span asp-validation-for="@Model.Event.PictureUrl" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="@Model.Event.Time" class="control-label"></label>
+                <input asp-for="@Model.Event.Time" class="form-control" />
+                <span asp-validation-for="@Model.Event.Time" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 <div>
-    <a asp-page="index">Back to list</a>
+    <a asp-page="ViewEvent" asp-route-id="@Model.Event.Id">Back to event</a>
 </div>
+
