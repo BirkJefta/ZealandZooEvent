@@ -9,6 +9,9 @@
     .card{
         background-color:#121212;
     }
+    .btn-tilmeld{
+        background-color:#C2DAB8;
+    }
 </style>
 <div class="container">
     <div class="d-flex justify-content-end mb-2">
@@ -30,7 +33,7 @@
             </div>
             <div class="container mt-6" style="margin-top:20px">
                 <div class="col-md-12 text-right">
-                    <button class="btn btn-success btn-lg">Tilmeld</button>
+                    <button class="btn-tilmeld btn-lg">Tilmeld</button>
                 </div>
             </div>
         </div>
@@ -47,7 +50,7 @@
                     </h5>
                     <h5>
                         <i class="fa fa-clock-o">
-                            Time: @Model.Event.Time
+                            Time: @Model.Event.Time.ToString("HH:mm")
                         </i>
                     </h5>
                     <h5>
@@ -65,7 +68,5 @@
         </div>
     </div>
 </div>
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
+
 

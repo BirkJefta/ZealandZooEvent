@@ -24,7 +24,7 @@ namespace ZealandZooEvent.Models
         [Required(ErrorMessage ="Date is required")]
         [Range(typeof(DateTime),"1/1/2024","10/1/2100",ErrorMessage ="Value must be between {1} and {2}")]
 
-        public DateTime? Time { get; set; }
+        public DateTime Time { get; set; }
         [Required(ErrorMessage = "Image Url is required")]
         [Url(ErrorMessage = "Invalid Url Format")]
         public string PictureUrl { get; set; }
