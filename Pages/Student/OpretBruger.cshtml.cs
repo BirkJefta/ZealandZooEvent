@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooEvent.Models;
 using System;
 using ZealandZooEvent.Interfaces;
+using System.ComponentModel;
+using ZealandZooEvent.Services;
 
 namespace ZealandZooEvent.Pages.Student
 {
@@ -16,9 +18,11 @@ namespace ZealandZooEvent.Pages.Student
 
         public string ErrorMessage { get; set; }
 
-        private readonly IRepository _studentRepository;
+        [BindProperty] public Student Student { get; set; }
 
-        public RegisterModel(IRepository studentRepository)
+        private readonly IStudentRepository _studentRepository;
+
+        public RegisterModel(IStudentRepository studentRepository)
         {
             _studentRepository = studentRepository;
         }
@@ -28,6 +32,15 @@ namespace ZealandZooEvent.Pages.Student
             // Add any logic needed on GET request
         }
 
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            _studentRepository.AddStudent(Student);
+            return RedirectToPage("/Student/Login");
+        }
         
     }
 }
