@@ -20,7 +20,7 @@ namespace ZealandZooEvent.Pages.Students
 
         [BindProperty] public Student Student { get; set; }
 
-        private readonly IStudentRepository _studentRepository;
+        private IStudentRepository _studentRepository;
 
         public RegisterModel(IStudentRepository studentRepository)
         {
@@ -39,7 +39,7 @@ namespace ZealandZooEvent.Pages.Students
                 return Page();
             }
             _studentRepository.AddStudent(Student);
-            return RedirectToPage("/Student/Login");
+            return RedirectToPage("/Students/Login");
         }
         
     }
