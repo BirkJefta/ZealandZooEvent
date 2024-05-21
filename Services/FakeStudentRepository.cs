@@ -139,4 +139,8 @@ public class FakeStudentRepository : IStudentRepository
     {
         _loggedInStudent = null;
     }
+    public void AddToAttendEvent(int eventid)
+    {
+        LoggedInStudent().IdJoinedEvents.Add(eventid);
+    }
 }
