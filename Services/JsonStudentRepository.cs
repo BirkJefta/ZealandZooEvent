@@ -28,27 +28,26 @@ public class JsonStudentRepository : IStudentRepository
         return new Student();
     }
 
-    // public void UpdateEvent(Event @evt)
-    // {
-    //     List<Student> @students = GetAllStudents().ToList();
-    //     if (@evt != null)
-    //     {
-    //         foreach (var e in @students)
-    //         {
-    //             if (e.Id == @evt.Id)
-    //             {
-    //                 e.Id = evt.Id;
-    //                 e.Name = evt.Name;
-    //                 e.Price = evt.Price;
-    //                 e.Description = evt.Description;
-    //                 e.Time = evt.Time;
-    //                 e.Location = evt.Location;
-    //             }
-    //         }
-    //     }
-    //
-    //     JsonFileWriter.WriteToJsonStudent(@events, JsonFileName);
-    // }
+    public void UpdateStudent(Student @sdt)
+    {
+        List<Student> @students = GetAllStudents().ToList();
+        if (@sdt != null)
+        {
+            foreach (var s in @students)
+            {
+                if (s.Id == sdt.Id)
+                {
+                    s.Id = sdt.Id;
+                    s.Name = sdt.Name;
+                    s.Telephone = sdt.Telephone;
+                    s.Email = sdt.Email;
+                    s.Password = sdt.Password;
+                }
+            }
+        }
+
+        JsonFileWriter.WriteToJsonStudent(@students, JsonFileName);
+    }
 
     public void AddStudent(Student student)
     {

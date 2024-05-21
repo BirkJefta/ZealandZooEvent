@@ -20,9 +20,9 @@ namespace ZealandZooEvent.Pages.Students
             _studentRepository = studentRepository;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            // Add any logic needed on GET request
+            return Page();
         }
 
         public IActionResult OnPost()
