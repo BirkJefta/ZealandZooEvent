@@ -13,6 +13,8 @@ namespace ZealandZooEvent.Interfaces {
 
         void DeleteStudent(Student student);
         List<Student> FilterStudents(string StudentName);
+        public Student LoggedInStudent();
+        bool IsValidUser(string username, string password);
 
     }
 

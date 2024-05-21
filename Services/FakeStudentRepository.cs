@@ -9,6 +9,7 @@ namespace ZealandZooEvent.Services;
 
 public class FakeStudentRepository : IStudentRepository
 {
+    private Student _loggedInStudent;
     private List<Student> students { get; set; }
     
 
@@ -116,7 +117,23 @@ public class FakeStudentRepository : IStudentRepository
         }
         return filteredStudentList;
     }
+    public bool IsValidUser(string username, string password)
+    {
+        bool isvalid = false;
+        foreach (var v in GetAllStudents())
+        {
+            if (v.Email == username && v.Password == password)
+            {
+                isvalid = true;
+                _loggedInStudent = v;
+            }
+        }
+        return isvalid;
+    }
 
-
+    public Student LoggedInStudent()
+    {
+        return _loggedInStudent;
+    }
 
 }

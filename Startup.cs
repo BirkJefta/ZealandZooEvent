@@ -24,6 +24,7 @@ namespace ZealandZooEvent {
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddScoped<IStudentRepository, JsonStudentRepository>();
             //services.AddSingleton<IRepository, FakeEventRepository>();
             services.AddTransient<IRepository, JsonEventRepository>();
             services.AddTransient<IStudentRepository, JsonStudentRepository>();
