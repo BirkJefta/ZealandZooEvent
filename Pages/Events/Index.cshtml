@@ -57,7 +57,7 @@
                     <th>
                         Time
                     </th>
-                    <th>
+                    <th style="text-align:right">
                         Price
                     </th>
 
@@ -74,7 +74,7 @@
                             @item.Location
                         </td>
                         <td>
-                            @item.Description
+                           "@item.Description"
                         </td>
                         <td>
                             @item.Time.ToString("dd-MM-yyyy")
@@ -82,7 +82,7 @@
                         <td>
                             @item.Time.ToString("HH:mm")
                         </td>
-                        <td>
+                        <td style="text-align:right">
                             @item.Price
                         </td>
                     </tr>

@@ -28,7 +28,7 @@ namespace ZealandZooEvent.Pages.Students
                 // User is valid, redirect to a different page
                 if (_studentRepository.LoggedInStudent().isAdmin == true)
                 {
-                    return RedirectToPage("/Index");
+                    return RedirectToPage("/Events/AdminPage");
                 }
                 else
                 {
