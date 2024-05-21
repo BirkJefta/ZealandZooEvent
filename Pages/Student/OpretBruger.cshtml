@@ -8,12 +8,14 @@ ViewData["Title"] = "Opret bruger";
     <h2>Opret bruger</h2>
     <form method="post">
         <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" required>
+            <label asp-for="@Model.Student.Email" class="control-label"></label>
+            <input asp-for="@Model.Student.Email" class="form-control" />
+            <span asp-validation-for="@Model.Student.Email" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+            <label asp-for="@Model.Student.Password" class="control-label"></label>
+            <input asp-for="@Model.Student.Password" class="form-control" />
+            <span asp-validation-for="@Model.Student.Password" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Opret</button>
     </form>
