@@ -6,7 +6,7 @@ using ZealandZooEvent.Interfaces;
 using System.ComponentModel;
 using ZealandZooEvent.Services;
 
-namespace ZealandZooEvent.Pages.Student
+namespace ZealandZooEvent.Pages.Students
 {
     public class RegisterModel : PageModel
     {
