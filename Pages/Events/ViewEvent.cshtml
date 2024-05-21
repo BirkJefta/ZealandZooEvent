@@ -12,12 +12,13 @@
     .btn-tilmeld{
         background-color:#C2DAB8;
     }
+    .container{
+        padding-top:20px;
+    }
 </style>
+
+
 <div class="container">
-    <div class="d-flex justify-content-end mb-2">
-        <a asp-page="EditEvent" asp-route-id="@Model.Event.Id" class="btn btn-sm btn-outline-primary">Edit Event</a>
-        <a asp-page="DeleteEvent" asp-route-id="@Model.Event.Id" class="btn btn-sm btn-outline-danger">Delete Event</a>
-    </div>
     <div class="row">
         <div class="col-md-6">
             <img src="@Model.Event.PictureUrl" alt="Event Picture" class="img-fluid w-100 h-auto">
@@ -33,7 +34,7 @@
             </div>
             <div class="container mt-6" style="margin-top:20px">
                 <div class="col-md-12 text-right">
-                    <button class="btn-tilmeld btn-lg">Add</button>
+                    <button class="btn-tilmeld btn-lg">Attend</button>
                 </div>
             </div>
         </div>
@@ -49,14 +50,20 @@
                         </i>
                     </h5>
                     <h5>
+                        <i class="fa fa-calendar">
+                            Date: @Model.Event.Time.ToString("dd-MM-yyyy\n")
+                        </i>
+                    </h5>
+                    <h5>
                         <i class="fa fa-clock-o">
                             Time: @Model.Event.Time.ToString("HH:mm\n")
-                            Day: @Model.Event.Time.ToString("dd-MM-yyyy")
                         </i>
                     </h5>
                     <h5>
                         <i class="fa fa-location-arrow">
-                            Location: @Model.Event.Location
+                            Location: <a href="https://www.google.com/maps/search/?api=1&query=@Uri.EscapeDataString(@Model.Event.Location)" target="_blank" style="color:#1BFFFF">
+                                @Model.Event.Location
+                            </a>
                         </i>
                     </h5>
                     <h5>
