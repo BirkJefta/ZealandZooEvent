@@ -23,10 +23,17 @@ namespace ZealandZooEvent.Pages.Students
 
         public IActionResult OnPost()
         {
-            if (IsValidUser(Student.Email, Student.Password))
+            if (_studentRepository.IsValidUser(Student.Email, Student.Password))
             {
                 // User is valid, redirect to a different page
-                return RedirectToPage("/Index");
+                if (_studentRepository.LoggedInStudent().isAdmin == true)
+                {
+                    return RedirectToPage("/Index");
+                }
+                else
+                {
+                    return RedirectToPage("/Events/Index");
+                }
             }
             else
             {
@@ -34,22 +41,6 @@ namespace ZealandZooEvent.Pages.Students
                 ErrorMessage = "Invalid username or password";
                 return Page();
             }
-        }
-
-        private bool IsValidUser(string username, string password)
-        {
-            bool isvalid = false;
-            foreach (var v in _studentRepository.GetAllStudents())
-            {
-                if (v.Email == username && v.Password == password) 
-                {
-                    isvalid=true;
-                }
-            }
-            return isvalid;
-             
-
-
         }
     }
 }

@@ -8,6 +8,7 @@ namespace ZealandZooEvent.Services;
 
 public class JsonStudentRepository : IStudentRepository
 {
+    private Student _loggedInStudent;
     string JsonFileName = @"Data/JsonStudents.json";
 
     public List<Student> GetAllStudents()
@@ -107,8 +108,28 @@ public class JsonStudentRepository : IStudentRepository
             return FilteredStudentList;
         }
         return @students;
-        
     }
+    public bool IsValidUser(string username, string password)
+    {
+        bool isvalid = false;
+        foreach (var v in GetAllStudents())
+        {
+            if (v.Email == username && v.Password == password)
+            {
+                isvalid = true;
+                _loggedInStudent = v;
+            }
+        }
+        return isvalid;
+
+
+
+    }
+    public Student LoggedInStudent()
+    {
+        return _loggedInStudent;
+    }
+
 
 
 }
