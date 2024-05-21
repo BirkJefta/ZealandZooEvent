@@ -121,9 +121,6 @@ public class JsonStudentRepository : IStudentRepository
             }
         }
         return isvalid;
-
-
-
     }
     public Student LoggedInStudent()
     {
