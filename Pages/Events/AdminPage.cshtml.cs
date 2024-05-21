@@ -3,21 +3,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using ZealandZooEvent.Interfaces;
 using ZealandZooEvent.Models;
-using ZealandZooEvent.Services;
 
 namespace ZealandZooEvent.Pages.Events
 {
-    public class IndexModel : PageModel
+    public class AdminPageModel : PageModel
     {
         IRepository repo;
 
         public List<Event> Events { get; private set; }
-        [BindProperty]
-        public Event Event { get; private set; }
-        [BindProperty]public string FilterCriteria { get; set; }
+        [BindProperty] public string FilterCriteria { get; set; }
 
-
-        public IndexModel(IRepository repository)
+        public AdminPageModel(IRepository repository)
         {
             repo = repository;
         }
@@ -27,7 +23,7 @@ namespace ZealandZooEvent.Pages.Events
         }
         public void OnPost()
         {
-            if(!string.IsNullOrEmpty(FilterCriteria))
+            if (!string.IsNullOrEmpty(FilterCriteria))
             {
                 Events = repo.FilterEvents(FilterCriteria);
             }
@@ -38,3 +34,4 @@ namespace ZealandZooEvent.Pages.Events
         }
     }
 }
+

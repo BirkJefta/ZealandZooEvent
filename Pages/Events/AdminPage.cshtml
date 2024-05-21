@@ -1,0 +1,96 @@
+﻿@page
+@model ZealandZooEvent.Pages.Events.AdminPageModel
+@{
+    ViewData["Title"] = "AdminPage";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body {
+        color: #FC8EAC;
+        background-color: black;
+    }
+
+    tbody, td, a {
+        color: white;
+    }
+
+    thead {
+        color: #FC8EAC;
+    }
+
+    .create-new, .btn-search {
+        background-color: #B8BC86;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-2 mb-3">
+            <h1>List Of Events</h1>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a asp-page="CreateEvent">
+                <button class="create-new" style="font-size:17px">
+                    Create new <i class="fa fa-plus"></i>
+                </button>
+            </a>
+            <form class="form-inline my-2 my-lg-0" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control" asp-for="FilterCriteria" placeholder="Search Name">
+                    <div class="input-group-append">
+                        <button class="btn-search" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th>
+                        Time
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Events)
+                {
+                    <tr>
+                        <td>
+                            <a asp-page="ViewEvent" asp-route-id="@item.Id"> @item.Name </a>
+                        </td>
+                        <td>
+                            @item.Location
+                        </td>
+                        <td>
+                            @item.Time.ToString($"HH:mm on dd/MM/yyyy")
+                        </td>
+                        <td>
+                            @item.Description
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
