@@ -8,7 +8,7 @@ namespace ZealandZooEvent.Interfaces {
 
         Student GetStudent(int id);
 
-        //void UpdateStudent(Event ev);
+        void UpdateStudent(Student sdt);
         void AddStudent(Student student);
 
         void DeleteStudent(Student student);

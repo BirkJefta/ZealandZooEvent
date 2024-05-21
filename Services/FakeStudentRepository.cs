@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ZealandZooEvent.Helpers;
 using ZealandZooEvent.Interfaces;
 using ZealandZooEvent.Models;
 
@@ -49,25 +50,25 @@ public class FakeStudentRepository : IStudentRepository
         }
         return new Student();
     }
-    // public void UpdateEvent(Event @evt)
-    // {
-    //     if (@evt != null)
-    //     {
-    //         foreach (var e in GetAllEvents())
-    //         {
-    //             if (e.Id == @evt.Id)
-    //             {
-    //                 e.Id = evt.Id;
-    //                 e.Name = evt.Name;
-    //                 e.Price = evt.Price;
-    //                 e.Description = evt.Description;
-    //                 e.Time = evt.Time;
-    //                 e.Location = evt.Location;
-    //             }
-    //         }
-    //     }
-    // }
-    
+    public void UpdateStudent(Student @sdt)
+    {
+        List<Student> @students = GetAllStudents().ToList();
+        if (@sdt != null)
+        {
+            foreach (var s in @students)
+            {
+                if (s.Id == sdt.Id)
+                {
+                    s.Id = sdt.Id;
+                    s.Name = sdt.Name;
+                    s.Telephone = sdt.Telephone;
+                    s.Email = sdt.Email;
+                    s.Password = sdt.Password;
+                }
+            }
+        }
+    }
+
     public void AddStudent(Student student)
     {
         List<int> studentIds = new List<int>();

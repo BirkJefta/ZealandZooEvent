@@ -1,0 +1,33 @@
+@page
+@model ZealandZooEvent.Pages.Students.RegisterModel
+@{
+ViewData["Title"] = "Opret bruger";
+}
+
+<div class="container">
+    <h2>Opret bruger</h2>
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="@Model.Student.Name" class="control-label"></label>
+            <input asp-for="@Model.Student.Name" class="form-control" />
+            <span asp-validation-for="@Model.Student.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Student.Email" class="control-label"></label>
+            <input asp-for="@Model.Student.Email" class="form-control" />
+            <span asp-validation-for="@Model.Student.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Student.Telephone" class="control-label"></label>
+            <input asp-for="@Model.Student.Telephone" class="form-control" />
+            <span asp-validation-for="@Model.Student.Telephone" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Student.Password" class="control-label"></label>
+            <input asp-for="@Model.Student.Password" class="form-control" />
+            <span asp-validation-for="@Model.Student.Password" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Opret</button>
+    </form>
+
+</div>
