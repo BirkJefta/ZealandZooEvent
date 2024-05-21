@@ -32,7 +32,7 @@ namespace ZealandZooEvent.Pages.Students
                 return Page();
             }
             _studentRepository.AddStudent(Student);
-            return RedirectToPage("/Student/Login");
+            return RedirectToPage("/Students/Login");
         }
         
     }
