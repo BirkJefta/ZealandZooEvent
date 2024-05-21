@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using ZealandZooEvent.Interfaces
+@inject IStudentRepository studentRepository
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,55 +11,60 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <style>
-        body {
-            background-color:black;
-        color: #FC8EAC; /* Makes all text white */
-        }
-        .navbar-custom {
-        background-color:#FC8EAC; /* Custom background color */
-        }
-        .navbar-brand
-        {
-            
-            color:white; /* Makes navbar text white */
-        }
+    body {
+        background-color: black;
+        color: #FC8EAC;
+    }
+
+    .navbar-custom {
+        background-color: #FC8EAC;
+    }
+
+    .navbar-brand {
+        color: white;
+    }
 </style>
 <body>
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-custom border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">ZealandZooEvent</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-page="/Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-page="/Events/OpeningHours">Opening Hours</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-page="/Events/Index">Events</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-right">
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-page="/Students/Login">Login</a> 
-                    </li>
-                </ul>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-custom border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">ZealandZooEvent</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Events/OpeningHours">Opening Hours</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Events/Index">Events</a>
+                        </li>
+                        @if (studentRepository.LoggedInStudent()?.isAdmin == true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-page="/Events/AdminPage">Admin</a>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav ml-right">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Students/Login">Login</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -65,3 +73,4 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+

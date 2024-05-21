@@ -8,7 +8,7 @@ namespace ZealandZooEvent.Services;
 
 public class JsonStudentRepository : IStudentRepository
 {
-    private Student _loggedInStudent;
+    static private Student  _loggedInStudent;
     string JsonFileName = @"Data/JsonStudents.json";
 
     public List<Student> GetAllStudents()
