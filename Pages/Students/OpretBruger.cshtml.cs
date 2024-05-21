@@ -10,17 +10,10 @@ namespace ZealandZooEvent.Pages.Students
 {
     public class RegisterModel : PageModel
     {
-        [BindProperty]
-        public string Username { get; set; }
-
-        [BindProperty]
-        public string Password { get; set; }
-
-        public string ErrorMessage { get; set; }
 
         [BindProperty] public Student Student { get; set; }
 
-        private readonly IStudentRepository _studentRepository;
+        private IStudentRepository _studentRepository;
 
         public RegisterModel(IStudentRepository studentRepository)
         {
