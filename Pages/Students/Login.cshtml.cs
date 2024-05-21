@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ZealandZooEvent.Interfaces;
 using ZealandZooEvent.Models;
 
 namespace ZealandZooEvent.Pages.Students
@@ -9,6 +10,12 @@ namespace ZealandZooEvent.Pages.Students
         [BindProperty] public Student Student { get; set; }
         public string ErrorMessage { get; set; }
 
+        private IStudentRepository _studentRepository;
+
+        public LoginModel(IStudentRepository studentRepository)
+        {
+            _studentRepository = studentRepository;
+        }
         public IActionResult OnGet()
         {
             return Page();
@@ -31,8 +38,18 @@ namespace ZealandZooEvent.Pages.Students
 
         private bool IsValidUser(string username, string password)
         {
-            // Replace this with your actual user validation logic
-            return username == "admin" && password == "password";
+            bool isvalid = false;
+            foreach (var v in _studentRepository.GetAllStudents())
+            {
+                if (v.Email == username && v.Password == password) 
+                {
+                    isvalid=true;
+                }
+            }
+            return isvalid;
+             
+
+
         }
     }
 }

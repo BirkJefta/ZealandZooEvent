@@ -32,6 +32,7 @@ namespace ZealandZooEvent.Pages.Students
                 return Page();
             }
             _studentRepository.AddStudent(Student);
+            Student.isAdmin = false;
             return RedirectToPage("/Students/Login");
         }
         
