@@ -58,13 +58,16 @@
                         Location
                     </th>
                     <th>
-                        Time
-                    </th>
-                    <th>
                         Description
                     </th>
                     <th>
+                        Time
+                    </th>
+                    <th>
                         Price
+                    </th>
+                    <th>
+
                     </th>
                 </tr>
             </thead>
@@ -79,16 +82,21 @@
                             @item.Location
                         </td>
                         <td>
-                            @item.Time.ToString("HH:mm")
+                            @item.Description
                         </td>
                         <td>
-                            @item.Description
+                            Time: @item.Time.ToString("HH:mm")
+                            Day: @item.Time.ToString("dd-MM-yyyy")
                         </td>
                         <td>
                             @item.Price
                         </td>
                         <td>
+                            <div class="Delete">
+                                <a asp-page="/DeleteEvent" asp-route-id="@Model.Event.Id" class="btn btn-sm btn-outline-danger">Delete Event</a>
+                            </div>
                         </td>
+
                     </tr>
                 }
             </tbody>

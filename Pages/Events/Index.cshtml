@@ -39,52 +39,50 @@
                     </div>
                 </form>
             </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Time
+                    </th>
+                    <th>
+                        Price
+                    </th>
 
-            <table class="table">
-                <thead>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Events)
+                {
                     <tr>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Location
-                        </th>
-                        <th>
-                            Time
-                        </th>
-                        <th>
-                            Description
-                        </th>
-                        <th>
-                            Price
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach(var item in Model.Events)
-                    {
-                        <tr>
-                            <td>
+                        <td>
                             <a asp-page="ViewEvent" asp-route-id="@item.Id"> @item.Name </a>
-                            </td>
-                            <td>
-                                @item.Location
-                            </td>
-                            <td>
-                                @item.Time.ToString("HH:mm")
-                            </td>
-                            <td>
-                                @item.Description
-                            </td>
-                            <td>
-                                @item.Price
-                            </td>
-                            <td>
-                            
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+                        </td>
+                        <td>
+                            @item.Location
+                        </td>
+                        <td>
+                            @item.Description
+                        </td>
+                        <td>
+                            Time: @item.Time.ToString("HH:mm")
+                            Day: @item.Time.ToString("dd-MM-yyyy")
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
         </div>
 </body>   

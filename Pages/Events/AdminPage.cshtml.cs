@@ -9,6 +9,8 @@ namespace ZealandZooEvent.Pages.Events
     public class AdminPageModel : PageModel
     {
         IRepository repo;
+        [BindProperty]
+        public Event Event { get; set; }
         public List<Event> Events { get; private set; }
         [BindProperty] public string FilterCriteria { get; set; }
         public AdminPageModel(IRepository repository) 

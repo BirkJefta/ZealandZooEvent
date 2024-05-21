@@ -44,7 +44,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/Events/Index">Events</a>
                         </li>
-                        @if (studentRepository.LoggedInStudent()?.isAdmin == true)
+                        @if (studentRepository.LoggedInStudent()?.isAdmin != true)//TODO:ændre til er true ikke !=
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-page="/Events/AdminPage">Admin</a>
