@@ -1,6 +1,7 @@
 ﻿@using ZealandZooEvent.Interfaces
 @inject IStudentRepository studentRepository
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,11 +52,24 @@
                             </li>
                         }
                     </ul>
-                    <ul class="navbar-nav ml-right">
-                        <li class="nav-item">
+                    @if (studentRepository.LoggedInStudent() == null)
+                    {
+                        <ul class="navbar-nav ml-right">
+                            <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/Students/Login">Login</a>
                         </li>
-                    </ul>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="navbar-nav ml-right">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-page="/Students/Login">
+                                    <i class="fa fa-user-circle fa-2x"> </i>
+                                </a>
+                            </li>
+                        </ul>
+                    }
                 </div>
             </div>
         </nav>
