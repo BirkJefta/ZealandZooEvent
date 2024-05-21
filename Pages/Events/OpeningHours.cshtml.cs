@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
 namespace ZealandZooEvent.Pages.Events {
-    public class PrivacyModel : PageModel {
-        private readonly ILogger<PrivacyModel> _logger;
+    public class OpeningHoursModel : PageModel {
+        
+        private readonly ILogger<OpeningHoursModel> _logger;
+        
 
-        public PrivacyModel(ILogger<PrivacyModel> logger)
+        public OpeningHoursModel(ILogger<OpeningHoursModel> logger)
         {
             _logger = logger;
         }

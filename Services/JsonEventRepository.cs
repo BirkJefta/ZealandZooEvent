@@ -112,10 +112,8 @@ public class JsonEventRepository : IRepository
         {
             return FilteredList;
         }
-        else
-        {
-            return @events;
-        }
+        return @events;
+        
     }
 
 
