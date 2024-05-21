@@ -1,26 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ZealandZooEvent.Models;
 
 namespace ZealandZooEvent.Pages.Students
 {
     public class LoginModel : PageModel
     {
-        [BindProperty]
-        public string Username { get; set; }
-
-        [BindProperty]
-        public string Password { get; set; }
-
+        [BindProperty] public Student Student { get; set; }
         public string ErrorMessage { get; set; }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            // You can add any logic needed on GET request here
+            return Page();
         }
 
         public IActionResult OnPost()
         {
-            if (IsValidUser(Username, Password))
+            if (IsValidUser(Student.Email, Student.Password))
             {
                 // User is valid, redirect to a different page
                 return RedirectToPage("/Index");
