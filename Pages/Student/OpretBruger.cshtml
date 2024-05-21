@@ -1,11 +1,11 @@
 @page
-@model ZealandZooEvent.Pages.Student.LoginModel
+@model ZealandZooEvent.Pages.Student.RegisterModel
 @{
-    ViewData["Title"] = "Login";
+ViewData["Title"] = "Opret bruger";
 }
 
 <div class="container">
-    <h2>Login</h2>
+    <h2>Opret bruger</h2>
     <form method="post">
         <div class="form-group">
             <label for="username">Username</label>
@@ -15,14 +15,13 @@
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
-        <a class="btn btn-secondary" asp-page="/Student/OpretBruger">Opret bruger</a>
+        <button type="submit" class="btn btn-primary">Opret</button>
     </form>
-</div>
 
-@if (Model.ErrorMessage != null)
-{
+    @if (Model.ErrorMessage != null)
+    {
     <div class="alert alert-danger">
         @Model.ErrorMessage
     </div>
-}
+    }
+</div>
