@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ZealandZooEvent.Models
 {
@@ -15,5 +16,6 @@ namespace ZealandZooEvent.Models
         public string Telephone { get; set; }
 
         public bool isAdmin { get; set; }
+        List<int>IdJoinedEvents { get; set; }
     }
 }
