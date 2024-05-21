@@ -135,5 +135,8 @@ public class FakeStudentRepository : IStudentRepository
     {
         return _loggedInStudent;
     }
-
+    public void LogOut()
+    {
+        _loggedInStudent = null;
+    }
 }

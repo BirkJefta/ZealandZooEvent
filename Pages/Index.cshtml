@@ -3,19 +3,29 @@
 @{
     ViewData["Title"] = "Home page";
 }
-<body>
+<head>
     <div class="text-center" style="padding-top:10px">
         <h1 class="display-4">Welcome To Zealand Zoo</h1>
     </div>
-    <style>
-    
-        .carousel-item img {
-            height: 550px; 
-            width: auto; 
-            object-fit: cover;
-            padding-top:20px;
+</head>
+<style>
+
+    .carousel-item img {
+        height: 550px;
+        width: auto;
+        object-fit: cover;
+        padding-top: 20px;
+    }
+</style>
+<body>
+    <div>
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Message"]
+            </div>
         }
-    </style>
+    </div>
     <div class="container-fluid" >
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">

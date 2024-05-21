@@ -126,6 +126,10 @@ public class JsonStudentRepository : IStudentRepository
     {
         return _loggedInStudent;
     }
+    public void LogOut()
+    {
+        _loggedInStudent = null;
+    }
 
 
 
