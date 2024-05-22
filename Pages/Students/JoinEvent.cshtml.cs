@@ -17,8 +17,22 @@ namespace ZealandZooEvent.Pages.Students
 
         public IActionResult OnGet(int id)
         {
-            _studentRepository.AddToAttendEvent(id);
-            TempData["Message"] = "Event has been added.";
+            string result = _studentRepository.AddToAttendEvent(id);
+            switch (result)
+            {
+                case "Succes":
+                    TempData["Message"] = "Event has been added.";
+                    break;
+                case "AlreadyAdded":
+                    TempData["Message"] = "Event is already added.";
+                    break;
+                case "Failed":
+                    TempData["Message"] = "Failed to add event.";
+                    break;
+                default:
+                    TempData["Message"] = "Event was not added, unknown error.";
+                    break;
+            }
             return RedirectToPage("/Events/ViewEvent", new { id = id });
         }
     }

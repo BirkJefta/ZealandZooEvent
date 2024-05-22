@@ -132,8 +132,9 @@ public class JsonStudentRepository : IStudentRepository
         _loggedInStudent = null;
     }
 
-    public void AddToAttendEvent(int eventid)
+    public string AddToAttendEvent(int eventid)
     {
+        
         var student = LoggedInStudent();
         if (student != null)
         {
@@ -141,9 +142,18 @@ public class JsonStudentRepository : IStudentRepository
             {
                 student.IdJoinedEvents = new List<int>();
             }
-            student.IdJoinedEvents.Add(eventid);
-            UpdateStudent(student);
+            if (student.IdJoinedEvents.Contains(eventid))
+            {
+                return "AlreadyAdded";
+            }
+            else
+            {
+                student.IdJoinedEvents.Add(eventid);
+                UpdateStudent(student);
+                return "success";
+            }
         }
+        return "Failed";
     }
 
 

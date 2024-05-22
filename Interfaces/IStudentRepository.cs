@@ -16,7 +16,7 @@ namespace ZealandZooEvent.Interfaces {
         public Student LoggedInStudent();
         bool IsValidUser(string username, string password);
         void LogOut();
-        public void AddToAttendEvent(int eventid);
+        public string AddToAttendEvent(int eventid);
 
     }
 
