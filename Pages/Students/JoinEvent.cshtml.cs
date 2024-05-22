@@ -20,7 +20,7 @@ namespace ZealandZooEvent.Pages.Students
             string result = _studentRepository.AddToAttendEvent(id);
             switch (result)
             {
-                case "Succes":
+                case "Success":
                     TempData["Message"] = "Event has been added.";
                     break;
                 case "AlreadyAdded":

@@ -150,7 +150,7 @@ public class JsonStudentRepository : IStudentRepository
             {
                 student.IdJoinedEvents.Add(eventid);
                 UpdateStudent(student);
-                return "success";
+                return "Success";
             }
         }
         return "Failed";
