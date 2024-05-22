@@ -30,7 +30,7 @@ namespace ZealandZooEvent.Pages.Students
                     TempData["Message"] = "Failed to add event.";
                     break;
                 default:
-                    TempData["Message"] = "Event was not added, unknown error.";
+                    TempData["Message"] = "unknown error. try again";
                     break;
             }
             return RedirectToPage("/Events/ViewEvent", new { id = id });

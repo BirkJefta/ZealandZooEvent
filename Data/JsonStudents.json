@@ -1,1 +1,1 @@
-[{"Id":1,"Name":"Admin","Password":"password","Email":"admin@admin.dk","Telephone":"0","isAdmin":true,"IdJoinedEvents":[]},{"Id":2,"Name":"test","Password":"1234","Email":"test@gmail.com","Telephone":"0","isAdmin":false,"IdJoinedEvents":[]}]
+[{"Id":1,"Name":"Admin","Password":"password","Email":"admin@admin.dk","Telephone":"0","isAdmin":true,"IdJoinedEvents":[]},{"Id":2,"Name":"test","Password":"1234","Email":"test@gmail.com","Telephone":"0","isAdmin":false,"IdJoinedEvents":[1]}]
