@@ -10,5 +10,6 @@ namespace ZealandZooEvent.Interfaces {
 
         void DeleteEvent(Event ev);
         List<Event> FilterEvents(string EventName);
+        public Event SearchById(int id);
     }
 }

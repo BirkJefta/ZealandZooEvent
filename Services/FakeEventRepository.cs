@@ -119,5 +119,17 @@ public class FakeEventRepository : IRepository
         }
         return FilteredList;
     }
+    public Event SearchById(int id)
+    {
+        Event EventWithId = null;
+        foreach (var v in GetAllEvents())
+        {
+            if (v.Id == id)
+            {
+                EventWithId = v;
+            }
+        }
+        return EventWithId;
+    }
 
 }
