@@ -142,6 +142,7 @@ public class JsonStudentRepository : IStudentRepository
                 student.IdJoinedEvents = new List<int>();
             }
             student.IdJoinedEvents.Add(eventid);
+            UpdateStudent(student);
         }
     }
 
