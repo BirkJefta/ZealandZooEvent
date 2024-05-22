@@ -33,7 +33,8 @@ namespace ZealandZooEvent.Pages.Students
                     TempData["Message"] = "unknown error. try again";
                     break;
             }
-            return RedirectToPage("/Events/ViewEvent", new { id = id });
+            string referringUrl = HttpContext.Request.Headers["Referer"].ToString();
+            return Redirect(referringUrl);
         }
     }
 }

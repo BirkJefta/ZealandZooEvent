@@ -1,4 +1,6 @@
 ﻿@page
+@using ZealandZooEvent.Interfaces
+@inject IStudentRepository studentRepository
 @model ZealandZooEvent.Pages.Events.IndexModel
 @{
     ViewData["Title"] = "Index";
@@ -21,12 +23,28 @@
         background-color: #B8BC86;
     }
 
+    .btn-tilmeld {
+        background-color: #C2DAB8;
+    }
+    
+
 </style>
-<body> 
-    <div class="container">
-            <div class="row justify-content-center mt-2 mb-3">
-                <h1>List Of Events</h1>
+<header>
+    <div class="row justify-content-center mt-2 mb-3">
+        <h1>List Of Events</h1>
+    </div>
+</header>
+<body>
+    <div>
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Message"]
             </div>
+        }
+    </div>
+    <div class="container">
+
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <form class="form-inline my-2 my-lg-0" method="post">
                     <div class="input-group">
@@ -60,6 +78,9 @@
                     <th style="text-align:right">
                         Price
                     </th>
+                    <th style="padding-left:50px">
+                        Attend
+                    </th>
 
                 </tr>
             </thead>
@@ -84,6 +105,24 @@
                         </td>
                         <td style="text-align:right">
                             @item.Price
+                        </td>
+                        <td style="padding-left:43px">
+                            @if (studentRepository.LoggedInStudent() != null)
+                            {
+                                <a asp-page="/Students/JoinEvent" asp-route-id="@item.Id">
+                                    <button class="btn-tilmeld btn">
+                                        Attend
+                                    </button>
+                                </a>
+                            }
+                            else
+                            {
+                                <a asp-page="/Students/Login">
+                                    <button class="btn-tilmeld btn">
+                                        Attend
+                                    </button>
+                                </a>
+                            }
                         </td>
                     </tr>
                 }
