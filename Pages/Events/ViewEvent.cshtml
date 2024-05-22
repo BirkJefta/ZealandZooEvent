@@ -1,10 +1,14 @@
 ﻿@page "{Id:min(1)}"
+@using ZealandZooEvent.Interfaces
+@inject IStudentRepository studentRepository
 @model ZealandZooEvent.Pages.Events.ViewEventModel
 @{
     ViewData["Title"] = "ViewEvent";
+    var eventId = RouteData.Values["Id"];
 }
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
     .card{
         background-color:#121212;
@@ -18,64 +22,95 @@
     }
 </style>
 
+<body>
+    <div>
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Message"]
+            </div>
+        }
+    </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <img src="@Model.Event.PictureUrl" alt="Event Picture" class="img-fluid w-100 h-auto">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@Model.Event.PictureUrl" alt="Event Picture" class="img-fluid w-100 h-auto">
+            </div>
+            <div class="col-md-6">
+                <div class="container-AboutEvent">
+                    <h5 class="card-header">About the event</h5>
+                    <div class="card">
+                        <div class="card-body">
+                            @Model.Event.Description
+                        </div>
+                    </div>
+                </div>
+                @if (studentRepository.LoggedInStudent() != null){
+                    <div class="container mt-6" style="margin-top:20px">
+                        <div class="col-md-12 text-right">
+
+                            <a asp-page="/Students/JoinEvent" asp-route-id="@eventId">
+                                <button class="btn-tilmeld btn-lg">
+                                    Attend
+                                </button>
+                            </a>
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="container mt-6" style="margin-top:20px">
+                        <div class="col-md-12 text-right">
+
+                            <a asp-page="/Students/Login" asp-route-id="">
+                                <button class="btn-tilmeld btn-lg">
+                                    Attend
+                                </button>
+                            </a>
+
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
-        <div class="col-md-6">
-            <div class="container-AboutEvent">
-                <h5 class="card-header">About the event</h5>
+        <div class="row mt-3">
+            <div class="col-md-6">
                 <div class="card">
+                    <h5 class="card-header">Information</h5>
                     <div class="card-body">
-                        @Model.Event.Description
+                        <h5>
+                            <i class="fa fa-id-badge">
+                               Event: @Model.Event.Name
+                            </i>
+                        </h5>
+                        <h5>
+                            <i class="fa fa-calendar">
+                                Date: @Model.Event.Time.ToString("dd-MM-yyyy\n")
+                            </i>
+                        </h5>
+                        <h5>
+                            <i class="fa fa-clock-o">
+                                Time: @Model.Event.Time.ToString("HH:mm\n")
+                            </i>
+                        </h5>
+                        <h5>
+                            <i class="fa fa-location-arrow">
+                                Location: <a href="https://www.google.com/maps/search/?api=1&query=@Uri.EscapeDataString(@Model.Event.Location)" target="_blank" style="color:#1BFFFF">
+                                    @Model.Event.Location
+                                </a>
+                            </i>
+                        </h5>
+                        <h5>
+                            <i class="fa fa-money">
+                                Price: @Model.Event.Price Dkk
+                            </i>
+                        </h5>
                     </div>
                 </div>
             </div>
-            <div class="container mt-6" style="margin-top:20px">
-                <div class="col-md-12 text-right">
-                    <button class="btn-tilmeld btn-lg">Attend</button>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="row mt-3">
-        <div class="col-md-6">
-            <div class="card">
-                <h5 class="card-header">Information</h5>
-                <div class="card-body">
-                    <h5>
-                        <i class="fa fa-id-badge">
-                           Event: @Model.Event.Name
-                        </i>
-                    </h5>
-                    <h5>
-                        <i class="fa fa-calendar">
-                            Date: @Model.Event.Time.ToString("dd-MM-yyyy\n")
-                        </i>
-                    </h5>
-                    <h5>
-                        <i class="fa fa-clock-o">
-                            Time: @Model.Event.Time.ToString("HH:mm\n")
-                        </i>
-                    </h5>
-                    <h5>
-                        <i class="fa fa-location-arrow">
-                            Location: <a href="https://www.google.com/maps/search/?api=1&query=@Uri.EscapeDataString(@Model.Event.Location)" target="_blank" style="color:#1BFFFF">
-                                @Model.Event.Location
-                            </a>
-                        </i>
-                    </h5>
-                    <h5>
-                        <i class="fa fa-money">
-                            Price: @Model.Event.Price Dkk
-                        </i>
-                    </h5>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+</body>
 

@@ -43,6 +43,7 @@ public class JsonStudentRepository : IStudentRepository
                     s.Telephone = sdt.Telephone;
                     s.Email = sdt.Email;
                     s.Password = sdt.Password;
+                    s.IdJoinedEvents = sdt.IdJoinedEvents;
                 }
             }
         }
@@ -125,6 +126,34 @@ public class JsonStudentRepository : IStudentRepository
     public Student LoggedInStudent()
     {
         return _loggedInStudent;
+    }
+    public void LogOut()
+    {
+        _loggedInStudent = null;
+    }
+
+    public string AddToAttendEvent(int eventid)
+    {
+        
+        var student = LoggedInStudent();
+        if (student != null)
+        {
+            if (student.IdJoinedEvents == null)
+            {
+                student.IdJoinedEvents = new List<int>();
+            }
+            if (student.IdJoinedEvents.Contains(eventid))
+            {
+                return "AlreadyAdded";
+            }
+            else
+            {
+                student.IdJoinedEvents.Add(eventid);
+                UpdateStudent(student);
+                return "Success";
+            }
+        }
+        return "Failed";
     }
 
 

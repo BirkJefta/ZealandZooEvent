@@ -15,6 +15,8 @@ namespace ZealandZooEvent.Interfaces {
         List<Student> FilterStudents(string StudentName);
         public Student LoggedInStudent();
         bool IsValidUser(string username, string password);
+        void LogOut();
+        public string AddToAttendEvent(int eventid);
 
     }
 
