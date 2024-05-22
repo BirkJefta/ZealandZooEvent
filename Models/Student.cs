@@ -16,6 +16,6 @@ namespace ZealandZooEvent.Models
         public string Telephone { get; set; }
 
         public bool isAdmin { get; set; }
-        public List<int>IdJoinedEvents { get; set; }
+        public List<int>IdJoinedEvents { get; set; } = new List<int>();
     }
 }
