@@ -139,5 +139,27 @@ public class FakeStudentRepository : IStudentRepository
     {
         _loggedInStudent = null;
     }
+    public string AddToAttendEvent(int eventid)
+    {
 
+        var student = LoggedInStudent();
+        if (student != null)
+        {
+            if (student.IdJoinedEvents == null)
+            {
+                student.IdJoinedEvents = new List<int>();
+            }
+            if (student.IdJoinedEvents.Contains(eventid))
+            {
+                return "AlreadyAdded";
+            }
+            else
+            {
+                student.IdJoinedEvents.Add(eventid);
+                UpdateStudent(student);
+                return "success";
+            }
+        }
+        return "Failed";
+    }
 }
