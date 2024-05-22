@@ -113,7 +113,18 @@ public class JsonEventRepository : IRepository
             return FilteredList;
         }
         return @events;
-        
+    }
+    public Event SearchById(int id)
+    {
+        Event EventWithId = null;
+        foreach (var v in GetAllEvents())
+        {
+            if (v.Id == id)
+            {
+                EventWithId = v;
+            }
+        }
+        return EventWithId;
     }
 
 
