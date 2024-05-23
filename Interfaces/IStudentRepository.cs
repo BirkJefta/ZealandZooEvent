@@ -18,6 +18,8 @@ namespace ZealandZooEvent.Interfaces {
         void LogOut();
         public string AddToAttendEvent(int eventid);
 
+        
+        
     }
 
 }    
