@@ -16,7 +16,8 @@ namespace ZealandZooEvent.Pages.Students
         }
         public void OnGet()
         {
+           
 
         }
     }
-}
+} 
