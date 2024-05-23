@@ -14,7 +14,9 @@ public class JsonEventRepository : IRepository
 
     public List<Event> GetAllEvents()
     {
-        return JsonFileReader.ReadToJsonEvent(JsonFileName);
+        List<Event>events = JsonFileReader.ReadToJsonEvent(JsonFileName);
+        List<Event> OrderedEvents = events.OrderBy(evt=>evt.Time).ToList();
+        return OrderedEvents;
     }
 
     public Event GetEvent(Guid id)

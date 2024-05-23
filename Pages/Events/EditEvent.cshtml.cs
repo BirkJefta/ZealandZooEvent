@@ -29,7 +29,7 @@ namespace ZealandZooEvent.Pages.Events
                 return Page();
             }
             repo.UpdateEvent(Event);
-            return RedirectToPage("Index");
+            return RedirectToPage("/Events/AdminPage");
         }
     }
 }

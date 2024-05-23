@@ -29,6 +29,6 @@ public class CreateEvent : PageModel
             return Page();
         }
         repo.AddEvent(Event);
-        return RedirectToPage("Index");
+        return RedirectToPage("/Events/AdminPage");
     } 
 }

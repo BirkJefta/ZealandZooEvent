@@ -36,6 +36,6 @@ public class DeleteEvent : PageModel
         }
         studentRepository.DeleteEventFromStudent(Event.Id);
         repo.DeleteEvent(Event);
-        return RedirectToPage("Index");
+        return RedirectToPage("/Events/AdminPage");
     }
 }
