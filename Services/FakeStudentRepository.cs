@@ -167,4 +167,14 @@ public class FakeStudentRepository : IStudentRepository
     {
 
     }
+    public List<Event> GetListOfJoinedEvents(Student student)
+    {
+        IRepository repository = new JsonEventRepository();
+        List<Event> events = new List<Event>();
+        foreach (int joinedid in student.IdJoinedEvents)
+        {
+            events.Add(repository.GetEvent(joinedid));
+        }
+        return events;
+    }
 }

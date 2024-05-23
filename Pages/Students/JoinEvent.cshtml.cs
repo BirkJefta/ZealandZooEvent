@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooEvent.Interfaces;
-
-using ZealandZooEvent.Interfaces;
 namespace ZealandZooEvent.Pages.Students
 {
     public class JoinEventModel : PageModel

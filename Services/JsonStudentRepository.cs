@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using ZealandZooEvent.Helpers;
@@ -167,6 +168,16 @@ public class JsonStudentRepository : IStudentRepository
             UpdateStudent(student);
         }
         
+    }
+    public List<Event> GetListOfJoinedEvents(Student student)
+    {
+        IRepository repository = new JsonEventRepository();
+        List<Event> events = new List<Event>();
+        foreach (int joinedid in student.IdJoinedEvents)
+        {
+            events.Add(repository.GetEvent(joinedid));
+        }
+        return events;
     }
     
      

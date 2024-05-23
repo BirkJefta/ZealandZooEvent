@@ -23,11 +23,7 @@ namespace ZealandZooEvent.Pages.Students
         }
         public IActionResult OnGet()
         {
-            foreach (int joinedid in _studentRepository.LoggedInStudent().IdJoinedEvents)
-            {
-
-                Events.Add(_repo.GetEvent(joinedid));
-            }
+            Events = _studentRepository.GetListOfJoinedEvents(student);
             return Page();
         }
         
