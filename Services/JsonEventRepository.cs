@@ -55,6 +55,9 @@ public class JsonEventRepository : IRepository
         JsonFileWriter.WriteToJsonEvent(@events, JsonFileName);
     }
 
+    
+
+
     public void AddEvent(Event ev)
     {
         List<Event> @events = GetAllEvents().ToList();
@@ -63,16 +66,18 @@ public class JsonEventRepository : IRepository
         {
             eventIds.Add(evt.Id);
         }
-
-        if (eventIds.Count != 0)
-        {
-            int start = eventIds.Max();
-            ev.Id = start + 1;
-        }
-        else
-        {
-            ev.Id = 1;
-        }
+        events[0].maxId += 1;
+        ev.Id = events[0].maxId;
+        
+        //if (eventIds.Count != 0)
+        //{
+        //    int start = eventIds.Max();
+        //    ev.Id = start + 1;
+        //}
+        //else
+        //{
+        //    ev.Id = 1;
+        //}
 
         events.Add(ev);
         JsonFileWriter.WriteToJsonEvent(@events, JsonFileName);
@@ -81,7 +86,7 @@ public class JsonEventRepository : IRepository
     public void DeleteEvent(Event ev)
     {
         List<Event> events = GetAllEvents().ToList();
-
+        
         // Use reverse loop to avoid issues with modifying the collection while iterating
         for (int i = events.Count - 1; i >= 0; i--)
         {

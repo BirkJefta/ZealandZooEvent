@@ -106,7 +106,7 @@ public class FakeEventRepository : IRepository
         }
 
     }
-
+    
     public List<Event> FilterEvents(string eventName)
     {
         List<Event> FilteredList = new List<Event>();

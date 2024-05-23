@@ -27,7 +27,7 @@ namespace ZealandZooEvent {
             services.AddScoped<IStudentRepository, JsonStudentRepository>();
             //services.AddSingleton<IRepository, FakeEventRepository>();
             services.AddTransient<IRepository, JsonEventRepository>();
-            //services.AddTransient<IStudentRepository, JsonStudentRepository>();
+            services.AddTransient<IStudentRepository, JsonStudentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

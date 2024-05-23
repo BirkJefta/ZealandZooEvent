@@ -7,7 +7,7 @@ namespace ZealandZooEvent.Interfaces {
         Event GetEvent(int id);
         void UpdateEvent(Event ev);
         void AddEvent(Event ev);
-
+        
         void DeleteEvent(Event ev);
         List<Event> FilterEvents(string EventName);
         public Event SearchById(int id);
