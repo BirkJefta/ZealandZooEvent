@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZealandZooEvent.Models;
 using ZealandZooEvent.Interfaces;
 using ZealandZooEvent.Services;
+using System;
 
 namespace ZealandZooEvent.Pages.Events;
 
@@ -22,7 +23,7 @@ public class DeleteEvent : PageModel
     }
 
 
-    public IActionResult OnGet(int id)
+    public IActionResult OnGet(Guid id)
     {
         Event = repo.GetEvent(id);
         return Page();

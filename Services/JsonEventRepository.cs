@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ZealandZooEvent.Helpers;
@@ -16,7 +17,7 @@ public class JsonEventRepository : IRepository
         return JsonFileReader.ReadToJsonEvent(JsonFileName);
     }
 
-    public Event GetEvent(int id)
+    public Event GetEvent(Guid id)
     {
         foreach (var v in GetAllEvents())
         {
@@ -61,14 +62,18 @@ public class JsonEventRepository : IRepository
     public void AddEvent(Event ev)
     {
         List<Event> @events = GetAllEvents().ToList();
-        List<int> eventIds = new List<int>();
-        foreach (var evt in events)
-        {
-            eventIds.Add(evt.Id);
-        }
-        events[0].maxId += 1;
-        ev.Id = events[0].maxId;
-        
+        Guid UniqueId = Guid.NewGuid();
+        ev.Id = UniqueId;
+
+        //List<Event> @events = GetAllEvents().ToList();
+        //List<int> eventIds = new List<int>();
+        //foreach (var evt in events)
+        //{
+        //    eventIds.Add(evt.Id);
+        //}
+        //events[0].maxId += 1;
+        //ev.Id = events[0].maxId;
+
         //if (eventIds.Count != 0)
         //{
         //    int start = eventIds.Max();
@@ -119,7 +124,7 @@ public class JsonEventRepository : IRepository
         }
         return @events;
     }
-    public Event SearchById(int id)
+    public Event SearchById(Guid id)
     {
         Event EventWithId = null;
         foreach (var v in GetAllEvents())

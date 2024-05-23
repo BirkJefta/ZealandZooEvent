@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ZealandZooEvent.Helpers;
@@ -133,7 +134,7 @@ public class JsonStudentRepository : IStudentRepository
         _loggedInStudent = null;
     }
 
-    public string AddToAttendEvent(int eventid)
+    public string AddToAttendEvent(Guid eventid)
     {
         
         var student = LoggedInStudent();
@@ -141,7 +142,7 @@ public class JsonStudentRepository : IStudentRepository
         {
             if (student.IdJoinedEvents == null)
             {
-                student.IdJoinedEvents = new List<int>();
+                student.IdJoinedEvents = new List<Guid>();
             }
             if (student.IdJoinedEvents.Contains(eventid))
             {
@@ -156,7 +157,7 @@ public class JsonStudentRepository : IStudentRepository
         }
         return "Failed";
     }
-    public void DeleteEventFromStudent(int eventid) 
+    public void DeleteEventFromStudent(Guid eventid) 
     {
         foreach (var student in GetAllStudents())
         {
@@ -173,7 +174,7 @@ public class JsonStudentRepository : IStudentRepository
     {
         IRepository repository = new JsonEventRepository();
         List<Event> events = new List<Event>();
-        foreach (int joinedid in student.IdJoinedEvents)
+        foreach (Guid joinedid in student.IdJoinedEvents)
         {
             events.Add(repository.SearchById(joinedid));
         }
