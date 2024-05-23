@@ -175,7 +175,7 @@ public class JsonStudentRepository : IStudentRepository
         List<Event> events = new List<Event>();
         foreach (int joinedid in student.IdJoinedEvents)
         {
-            events.Add(repository.GetEvent(joinedid));
+            events.Add(repository.SearchById(joinedid));
         }
         return events;
     }
