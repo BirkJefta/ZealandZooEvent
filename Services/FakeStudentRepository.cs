@@ -139,7 +139,7 @@ public class FakeStudentRepository : IStudentRepository
     {
         _loggedInStudent = null;
     }
-    public string AddToAttendEvent(int eventid)
+    public string AddToAttendEvent(Guid eventid)
     {
 
         var student = LoggedInStudent();
@@ -147,7 +147,7 @@ public class FakeStudentRepository : IStudentRepository
         {
             if (student.IdJoinedEvents == null)
             {
-                student.IdJoinedEvents = new List<int>();
+                student.IdJoinedEvents = new List<Guid>();
             }
             if (student.IdJoinedEvents.Contains(eventid))
             {
@@ -161,5 +161,20 @@ public class FakeStudentRepository : IStudentRepository
             }
         }
         return "Failed";
+    }
+
+    public void DeleteEventFromStudent(Guid id)
+    {
+
+    }
+    public List<Event> GetListOfJoinedEvents(Student student)
+    {
+        IRepository repository = new JsonEventRepository();
+        List<Event> events = new List<Event>();
+        foreach (Guid joinedid in student.IdJoinedEvents)
+        {
+            events.Add(repository.GetEvent(joinedid));
+        }
+        return events;
     }
 }

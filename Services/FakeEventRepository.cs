@@ -15,9 +15,10 @@ public class FakeEventRepository : IRepository
     public FakeEventRepository()
     {
         events = new List<Event>();
+        Guid UniqueId = Guid.NewGuid();
         events.Add(new Event()
         {
-            Id = 1,
+            Id = UniqueId,
             Name = "Zealand Festival",
             Price = 100,
             Location = "Roskilde",
@@ -26,7 +27,7 @@ public class FakeEventRepository : IRepository
         });
         events.Add(new Event()
         {
-            Id = 2,
+            Id = UniqueId,
             Name = "Fodbold",
             Price = 10,
             Location = "Roskilde",
@@ -43,7 +44,7 @@ public class FakeEventRepository : IRepository
         return events;
     }
 
-    public Event GetEvent(int id)
+    public Event GetEvent(Guid id)
     {
         foreach (var v in GetAllEvents())
         {
@@ -75,22 +76,8 @@ public class FakeEventRepository : IRepository
     
     public void AddEvent(Event ev)
     {
-        List<int> eventIds = new List<int>();
-        foreach (var evt in events)
-        {
-            eventIds.Add(evt.Id);
-        }
-
-        if (eventIds.Count != 0)
-        {
-            int start = eventIds.Max();
-            ev.Id = start + 1; 
-        }
-        else
-        {
-            ev.Id = 1; 
-        }
-        events.Add(ev);
+        Guid id = ev.Id;
+        GetAllEvents().Add(ev);
     }
     public void DeleteEvent(Event ev)
     {
@@ -106,7 +93,7 @@ public class FakeEventRepository : IRepository
         }
 
     }
-
+    
     public List<Event> FilterEvents(string eventName)
     {
         List<Event> FilteredList = new List<Event>();
@@ -119,7 +106,7 @@ public class FakeEventRepository : IRepository
         }
         return FilteredList;
     }
-    public Event SearchById(int id)
+    public Event SearchById(Guid id)
     {
         Event EventWithId = null;
         foreach (var v in GetAllEvents())

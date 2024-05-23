@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ZealandZooEvent.Interfaces;
-
+using System;
 using ZealandZooEvent.Interfaces;
 namespace ZealandZooEvent.Pages.Students
 {
@@ -15,7 +14,7 @@ namespace ZealandZooEvent.Pages.Students
             _studentRepository = studentRepository;
         }
 
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(Guid id)
         {
             string result = _studentRepository.AddToAttendEvent(id);
             switch (result)

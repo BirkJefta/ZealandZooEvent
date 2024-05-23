@@ -7,7 +7,8 @@ namespace ZealandZooEvent.Models
     {
         [Required(ErrorMessage = "Location is required")]
         public string Location { get; set; }
-        public int Id { get; set; }
+        public Guid Id { get; set; }
+        public int maxId { get; set; }
 
         [Display(Name = "Price")]
         

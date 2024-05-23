@@ -1,8 +1,100 @@
 ﻿@page
+@using ZealandZooEvent.Interfaces
+@inject IRepository repo
 @model ZealandZooEvent.Pages.Students.StudentProfileModel
 @{
-    ViewData["Title"] = "StudentProfile";
+    ViewData["Title"] = "Profile";
 }
-<h1>
-    @Model.student.Name
-</h1>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body {
+        color: #FC8EAC;
+        background-color: black;
+    }
+
+    tbody, td, a {
+        color: white;
+    }
+
+    thead {
+        color: #FC8EAC;
+    }
+
+    .create-new, .btn-search {
+        background-color: #B8BC86;
+    }
+
+    .btn-tilmeld {
+        background-color: #C2DAB8;
+    }
+</style>
+<header>
+    <div class="row justify-content-center mt-2 mb-3">
+        <h1>Joined Events</h1>
+    </div>
+</header>
+<body>
+    <div>
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Message"]
+            </div>
+        }
+    </div>
+    <div class="container">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Time
+                    </th>
+                    <th style="text-align:right">
+                        Price
+                    </th>
+               
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Events)
+                {
+                    <tr>
+                        <td>
+                            <a asp-page="ViewEvent" asp-route-id="@item.Id"> @item.Name </a>
+                        </td>
+                        <td>
+                            @item.Location
+                        </td>
+                        <td>
+                            "@item.Description"
+                        </td>
+                        <td>
+                            @item.Time.ToString("dd-MM-yyyy")
+                        </td>
+                        <td>
+                            @item.Time.ToString("HH:mm")
+                        </td>
+                        <td style="text-align:right">
+                            @item.Price
+                        </td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>   

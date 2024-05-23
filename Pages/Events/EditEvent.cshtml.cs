@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using ZealandZooEvent.Interfaces;
 using ZealandZooEvent.Models;
 using ZealandZooEvent.Services;
@@ -16,7 +17,7 @@ namespace ZealandZooEvent.Pages.Events
         {
             repo = repository;
         }
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(Guid id)
         {
             Event = repo.GetEvent(id);
             return Page();
@@ -28,7 +29,7 @@ namespace ZealandZooEvent.Pages.Events
                 return Page();
             }
             repo.UpdateEvent(Event);
-            return RedirectToPage("Index");
+            return RedirectToPage("/Events/AdminPage");
         }
     }
 }

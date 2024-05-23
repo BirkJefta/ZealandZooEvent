@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using ZealandZooEvent.Interfaces;
 using ZealandZooEvent.Models;
 
@@ -16,7 +17,7 @@ namespace ZealandZooEvent.Pages.Events
             repo = repository;
             _studentRepository = studentRepository;
         }
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(Guid id)
         {
             Event = repo.GetEvent(id);
             return Page();

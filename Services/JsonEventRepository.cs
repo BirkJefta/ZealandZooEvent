@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ZealandZooEvent.Helpers;
@@ -13,10 +14,12 @@ public class JsonEventRepository : IRepository
 
     public List<Event> GetAllEvents()
     {
-        return JsonFileReader.ReadToJsonEvent(JsonFileName);
+        List<Event>events = JsonFileReader.ReadToJsonEvent(JsonFileName);
+        List<Event> OrderedEvents = events.OrderBy(evt=>evt.Time).ToList();
+        return OrderedEvents;
     }
 
-    public Event GetEvent(int id)
+    public Event GetEvent(Guid id)
     {
         foreach (var v in GetAllEvents())
         {
@@ -55,24 +58,33 @@ public class JsonEventRepository : IRepository
         JsonFileWriter.WriteToJsonEvent(@events, JsonFileName);
     }
 
+    
+
+
     public void AddEvent(Event ev)
     {
         List<Event> @events = GetAllEvents().ToList();
-        List<int> eventIds = new List<int>();
-        foreach (var evt in events)
-        {
-            eventIds.Add(evt.Id);
-        }
+        Guid UniqueId = Guid.NewGuid();
+        ev.Id = UniqueId;
 
-        if (eventIds.Count != 0)
-        {
-            int start = eventIds.Max();
-            ev.Id = start + 1;
-        }
-        else
-        {
-            ev.Id = 1;
-        }
+        //List<Event> @events = GetAllEvents().ToList();
+        //List<int> eventIds = new List<int>();
+        //foreach (var evt in events)
+        //{
+        //    eventIds.Add(evt.Id);
+        //}
+        //events[0].maxId += 1;
+        //ev.Id = events[0].maxId;
+
+        //if (eventIds.Count != 0)
+        //{
+        //    int start = eventIds.Max();
+        //    ev.Id = start + 1;
+        //}
+        //else
+        //{
+        //    ev.Id = 1;
+        //}
 
         events.Add(ev);
         JsonFileWriter.WriteToJsonEvent(@events, JsonFileName);
@@ -81,7 +93,7 @@ public class JsonEventRepository : IRepository
     public void DeleteEvent(Event ev)
     {
         List<Event> events = GetAllEvents().ToList();
-
+        
         // Use reverse loop to avoid issues with modifying the collection while iterating
         for (int i = events.Count - 1; i >= 0; i--)
         {
@@ -114,7 +126,7 @@ public class JsonEventRepository : IRepository
         }
         return @events;
     }
-    public Event SearchById(int id)
+    public Event SearchById(Guid id)
     {
         Event EventWithId = null;
         foreach (var v in GetAllEvents())
