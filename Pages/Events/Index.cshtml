@@ -4,6 +4,7 @@
 @model ZealandZooEvent.Pages.Events.IndexModel
 @{
     ViewData["Title"] = "Index";
+    string sortOrder = Model.CurrentSort == "PriceAsc" ? "PriceDesc" : "PriceAsc";
 }
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -64,15 +65,6 @@
                     <label class="mr-2">End Date</label>
                     <input type="date" class="form-control" asp-for="EndDate" />
                 </div>
-                <div class="input-group mr-3">
-                    <select class="form-control" asp-for="SortCriteria">
-                        <option value="">Select Sort Option</option>
-                        <option value="PriceDesc">Sort by Price (High to Low)</option>
-                        <option value="PriceAsc">Sort by Price (Low to High)</option>
-                        <option value="DateAsc">Sort by Date (Soonest First)</option>
-                        <option value="DateDesc">Sort by Date (Latest First)</option>
-                    </select>
-                </div>
                 <div class="input-group-append">
                     <button class="btn-search" type="submit">
                         Apply Filters
@@ -88,7 +80,9 @@
                     <th>Description</th>
                     <th>Date</th>
                     <th>Time</th>
-                    <th style="text-align:right">Price</th>
+                    <th style="text-align:right">
+                        <a asp-page="./Index" asp-route-sortOrder="@sortOrder">Price</a>
+                    </th>
                     <th style="padding-left:30px">Join Event</th>
                 </tr>
             </thead>
@@ -128,3 +122,4 @@
         </table>
     </div>
 </body>
+
