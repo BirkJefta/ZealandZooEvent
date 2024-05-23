@@ -162,4 +162,9 @@ public class FakeStudentRepository : IStudentRepository
         }
         return "Failed";
     }
+
+    public void DeleteEventFromStudent(int id)
+    {
+
+    }
 }

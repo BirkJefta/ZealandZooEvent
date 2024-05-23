@@ -155,7 +155,21 @@ public class JsonStudentRepository : IStudentRepository
         }
         return "Failed";
     }
-
+    public void DeleteEventFromStudent(int eventid) 
+    {
+        foreach (var student in GetAllStudents())
+        {
+            if (student.IdJoinedEvents.Contains(eventid))
+            {
+                int index = student.IdJoinedEvents.IndexOf(eventid);
+                student.IdJoinedEvents.RemoveAt(index);
+            }
+            UpdateStudent(student);
+        }
+        
+    }
+    
+     
 
 
 }

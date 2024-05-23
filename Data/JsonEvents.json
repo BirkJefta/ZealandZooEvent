@@ -2,7 +2,7 @@
   {
     "Location": null,
     "Id": 0,
-    "maxId": 13,
+    "maxId": 14,
     "Price": null,
     "Name": null,
     "Description": null,
@@ -47,36 +47,6 @@
     "Name": "Test1",
     "Description": "test1",
     "Time": "2024-05-24T10:40:00",
-    "PictureUrl": "https://picsum.photos/200/300"
-  },
-  {
-    "Location": "test2",
-    "Id": 5,
-    "maxId": 0,
-    "Price": 2,
-    "Name": "test2",
-    "Description": "test2",
-    "Time": "2024-05-25T10:42:00",
-    "PictureUrl": "https://picsum.photos/200/300"
-  },
-  {
-    "Location": "test3",
-    "Id": 6,
-    "maxId": 0,
-    "Price": 3,
-    "Name": "test3",
-    "Description": "test3",
-    "Time": "2024-05-27T10:48:00",
-    "PictureUrl": "https://picsum.photos/200/300"
-  },
-  {
-    "Location": "test6",
-    "Id": 12,
-    "maxId": 0,
-    "Price": 6,
-    "Name": "test6",
-    "Description": "test6",
-    "Time": "2024-05-31T10:54:00",
     "PictureUrl": "https://picsum.photos/200/300"
   }
 ]

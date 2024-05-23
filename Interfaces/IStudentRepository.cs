@@ -10,7 +10,7 @@ namespace ZealandZooEvent.Interfaces {
 
         void UpdateStudent(Student sdt);
         void AddStudent(Student student);
-
+        void DeleteEventFromStudent(int id);
         void DeleteStudent(Student student);
         List<Student> FilterStudents(string StudentName);
         public Student LoggedInStudent();
