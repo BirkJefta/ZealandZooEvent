@@ -2,35 +2,39 @@
 @model ZealandZooEvent.Pages.Students.StudentProfileModel
 @{
     ViewData["Title"] = "StudentProfile";
-}
-
-<h1>Profile</h1>
-<table class="table">
-    <thead>
-    <tr>
+    <h1>Profile</h1>
+        <table class="table">
+        <thead>
+        <tr>
         <th style="Color:white;">Name</th>
         <th style="color: white">Email</th>
         <th style="color:white">Kode</th>
         <th style="color:white"></th> <!-- Empty header for the edit button -->
-    </tr>
-    </thead>
-    <tbody>
-    @if (Model.student != null)
-    {
-        <tr style="color: white;" class="table-white">
-            <td>@Model.student.Name</td>
-            <td>@Model.student.Email</td>
-            <td>@Model.student.Password</td>
-            <td>
-                <a href="/Students/Edit/@Model.student.Id" class="btn btn-primary">Edit</a> <!-- Assuming student has an Id property -->
-            </td>
         </tr>
-    }
-    else
-    {
-        <tr style="color: white;" class="table-white">
-            <td colspan="4">No student found</td>
-        </tr>
-    }
-    </tbody>
+        </thead>
+        <tbody>
+        @if (Model.student != null)
+        {
+            <tr style="color: white;" class="table-white">
+                <td>@Model.student.Name</td>
+                <td>@Model.student.Email</td>
+                <td>@Model.student.Password</td>
+                <td>
+                    <a href="/Students/Edit/@Model.student.Id" class="btn btn-primary">Edit</a> <!-- Assuming student has an Id property -->
+                </td>
+            </tr>
+            <tr style="color: white;" class="table-white">
+                <td colspan="4"><strong>Tilmeldte Events</strong></td>
+            </tr>
+        }
+        else
+        {
+            <tr style="color: white;" class="table-white">
+                <td colspan="4">No student found</td>
+            </tr>
+        }
+        </tbody>
 </table>
+}
+
+
