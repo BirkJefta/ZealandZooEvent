@@ -29,7 +29,12 @@
     .btn-tilmeld {
         background-color: #C2DAB8;
     }
-
+    .btn-tilmeld:disabled {
+    background-color: #d3d3d3; 
+    color: #888; 
+    cursor: not-allowed; 
+    border: 1px solid #ccc; 
+    }
 
 </style>
 <header>
@@ -85,6 +90,7 @@
                     <th style="text-align:right">
                         <a asp-page="./Index" asp-route-sortOrder="@sortOrder">Price</a>
                     </th>
+                    <th>Participants</th>
                     <th style="padding-left:30px">Join Event</th>
                 </tr>
             </thead>
@@ -100,24 +106,41 @@
                         <td>@item.Time.ToString("dd-MM-yyyy")</td>
                         <td>@item.Time.ToString("HH:mm")</td>
                         <td style="text-align:right">@item.Price</td>
-                        <td style="padding-left:43px">
-                            @if (studentRepository.LoggedInStudent() != null)
-                            {
-                                <a asp-page="/Students/JoinEvent" asp-route-id="@item.Id">
-                                    <button class="btn-tilmeld btn">
-                                        Join
-                                    </button>
-                                </a>
-                            }
-                            else
-                            {
-                                <a asp-page="/Students/Login">
-                                    <button class="btn-tilmeld btn">
-                                        Join
-                                    </button>
-                                </a>
-                            }
+                        <td>
+                            @item.CurrentParticipants/@item.MaxParticipants
                         </td>
+                        @if (item.CurrentParticipants < item.MaxParticipants)
+                        {
+                            <td style="padding-left:43px">
+                                @if (studentRepository.LoggedInStudent() != null)
+                                {
+                                    <a asp-page="/Students/JoinEvent" asp-route-id="@item.Id">
+                                        <button class="btn-tilmeld btn">
+                                            Join
+                                        </button>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a asp-page="/Students/Login">
+                                        <button class="btn-tilmeld btn">
+                                            Join
+                                        </button>
+                                    </a>
+                                }
+                            </td>
+                        } else
+                        {
+                            <td style="padding-left:43px">
+                                
+                                    
+                                <button class="btn-tilmeld btn" disabled>
+                                    Full
+                                 </button>
+                                    
+                            </td>
+                        }
+
                     </tr>
                 }
             </tbody>
