@@ -50,6 +50,8 @@ public class JsonEventRepository : IRepository
                         e.Time = evt.Time;
                         e.Location = evt.Location;
                         e.PictureUrl = evt.PictureUrl;
+                        e.CurrentParticipants = evt.CurrentParticipants;
+                        e.MaxParticipants = evt.MaxParticipants;
                     }
                 }
             }
