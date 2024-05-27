@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Collections.Generic;
 using ZealandZooEvent.Interfaces;
 using ZealandZooEvent.Models;
 
@@ -8,26 +8,48 @@ namespace ZealandZooEvent.Pages.Students
 {
     public class StudentProfileModel : PageModel
     {
-        IStudentRepository _studentRepository;
-        IRepository _repo;
+        private readonly IStudentRepository _studentRepository;
+
+        public StudentProfileModel(IStudentRepository studentRepository)
+        {
+            _studentRepository = studentRepository;
+        }
+
+        [BindProperty]
+        public Student student { get; set; }
+
         [BindProperty]
         public List<Event> Events { get; set; }
 
-        [BindProperty]
-        public Student student {get; set; }
-        public StudentProfileModel(IStudentRepository studentRepository, IRepository repo) {
-            _studentRepository = studentRepository;
-            _repo = repo;
-            student = studentRepository.LoggedInStudent();
-            Events = new List<Event>();
-        }
         public IActionResult OnGet()
         {
-            Events = _studentRepository.GetListOfJoinedEvents(student);
+            // Hent den indloggede student
+            student = _studentRepository.LoggedInStudent();
+
+            // Altid initialiser Events som en ny liste, hvis den ikke allerede er initialiseret
+            if (Events == null)
+            {
+                Events = new List<Event>();
+            }
+
+            // Hent listen over tilmeldte events for den indloggede student
+            if (student != null)
+            {
+                Events = _studentRepository.GetListOfJoinedEvents(student);
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Fejl: Ingen indloggede student blev fundet";
+                return RedirectToPage("/Error"); // Antagelse: Du har en fejlside oprettet under /Pages/Error.cshtml
+            }
+
+            // Tjek om der er en TempData-meddelelse og send den til visning på siden
+            if (TempData["Message"] != null)
+            {
+                ViewData["Message"] = TempData["Message"].ToString();
+            }
+
             return Page();
         }
-        
-
-
     }
 }

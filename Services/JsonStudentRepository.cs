@@ -31,27 +31,36 @@ public class JsonStudentRepository : IStudentRepository
         return new Student();
     }
 
-    public void UpdateStudent(Student @sdt)
+    public void UpdateStudent(Student updatedStudent)
     {
-        List<Student> @students = GetAllStudents().ToList();
-        if (@sdt != null)
+        List<Student> students = GetAllStudents();
+
+        if (updatedStudent != null)
         {
-            foreach (var s in @students)
+            foreach (var student in students)
             {
-                if (s.Id == sdt.Id)
+                if (student.Id == updatedStudent.Id)
                 {
-                    s.Id = sdt.Id;
-                    s.Name = sdt.Name;
-                    s.Telephone = sdt.Telephone;
-                    s.Email = sdt.Email;
-                    s.Password = sdt.Password;
-                    s.IdJoinedEvents = sdt.IdJoinedEvents;
+                    student.Name = updatedStudent.Name;
+                    student.Telephone = updatedStudent.Telephone;
+                    student.Email = updatedStudent.Email;
+                    student.Password = updatedStudent.Password;
+                    student.IdJoinedEvents = updatedStudent.IdJoinedEvents;
+
+                    // Opdater den indloggede student, hvis det er den samme som den opdaterede student
+                    if (_loggedInStudent != null && _loggedInStudent.Id == updatedStudent.Id)
+                    {
+                        _loggedInStudent = student;
+                    }
+
+                    break; // Stop loopet, når den opdaterede student er fundet
                 }
             }
         }
 
-        JsonFileWriter.WriteToJsonStudent(@students, JsonFileName);
+        JsonFileWriter.WriteToJsonStudent(students, JsonFileName);
     }
+
 
     public void AddStudent(Student student)
     {
@@ -139,10 +148,15 @@ public class JsonStudentRepository : IStudentRepository
     {
         IRepository repository = new JsonEventRepository();
         List<Event> events = new List<Event>();
-        foreach (Guid joinedid in student.IdJoinedEvents)
+
+        if (student.IdJoinedEvents != null)
         {
-            events.Add(repository.SearchById(joinedid));
+            foreach (Guid joinedid in student.IdJoinedEvents)
+            {
+                events.Add(repository.SearchById(joinedid));
+            }
         }
+
         return events;
     }
     
