@@ -13,25 +13,25 @@ public class FakeStudentRepository : IStudentRepository
     private List<Student> students { get; set; }
     
 
-    // public FakeStudentRepository()
-    // {
-    //     students = new List<Student>();
-    //     students.Add(new Student()
-    //     {
-    //         Id = 1,
-    //         Name = "Ole",
-    //         Email = "",
-    //         Telephone = ""
-    //     });
-    //     students.Add(new Student()
-    //     {
-    //         Id = 2,
-    //         Name = "Else",
-    //         Email = "",
-    //         Telephone = ""
-    //     });
-    //
-    // }
+    public FakeStudentRepository()
+    {
+        students = new List<Student>();
+        students.Add(new Student()
+        {
+            Id = 1,
+            Name = "Ole",
+            Email = "",
+            Telephone = ""
+        });
+        students.Add(new Student()
+        {
+            Id = 2,
+            Name = "Else",
+            Email = "",
+            Telephone = ""
+        });
+    
+    }
 
     
 
@@ -163,9 +163,17 @@ public class FakeStudentRepository : IStudentRepository
         return "Failed";
     }
 
-    public void DeleteEventFromStudent(Guid id)
+    public void DeleteEventFromStudent(Guid eventid)
     {
-
+        foreach (var student in GetAllStudents())
+        {
+            if (student.IdJoinedEvents.Contains(eventid))
+            {
+                int index = student.IdJoinedEvents.IndexOf(eventid);
+                student.IdJoinedEvents.RemoveAt(index);
+            }
+            UpdateStudent(student);
+        }
     }
     public List<Event> GetListOfJoinedEvents(Student student)
     {
