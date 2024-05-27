@@ -24,7 +24,7 @@ namespace ZealandZooEvent.Pages.Events
             repo = repository;
         }
 
-        public void OnGet(string sortOrder)
+        public IActionResult OnGet(string sortOrder)
         {
             CurrentSort = sortOrder;
             Events = repo.GetAllEvents();
@@ -59,6 +59,7 @@ namespace ZealandZooEvent.Pages.Events
                 default:
                     break;
             }
+            return Page();  
         }
 
         public void OnPost()
