@@ -10,9 +10,14 @@ namespace ZealandZooEvent.Models
         public Guid Id { get; set; }
 
         [Display(Name = "Price")]
-        
         [Range(0,100000,ErrorMessage ="Value must be above {1}")]
         public double? Price { get; set; }
+       
+        [Display(Name = "Max Participants")]
+        [Range(0, 1000, ErrorMessage = "Value must be above {1}")]
+        public int MaxParticipants { get; set; }
+
+        public int CurrentParticipants { get; set; }
 
         [Display(Name = "Event Name")]
         [Required(ErrorMessage = "Event name is required")]
