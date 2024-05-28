@@ -135,15 +135,15 @@ public class JsonStudentRepository : IStudentRepository
     {
         foreach (var student in GetAllStudents())
         {
-            if (student.IdJoinedEvents.Contains(eventid))
+            if (student.IdJoinedEvents != null && student.IdJoinedEvents.Contains(eventid))
             {
                 int index = student.IdJoinedEvents.IndexOf(eventid);
                 student.IdJoinedEvents.RemoveAt(index);
+                UpdateStudent(student);
             }
-            UpdateStudent(student);
         }
-        
     }
+
     public List<Event> GetListOfJoinedEvents(Student student)
     {
         IRepository repository = new JsonEventRepository();
