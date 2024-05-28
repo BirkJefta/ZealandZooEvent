@@ -13,16 +13,16 @@
 </head>
 <style>
     body {
-        background-color: black;
-        color: #FC8EAC;
+        background-color: #000000;
+        color: #ffffff;
     }
 
     .navbar-custom {
-        background-color: #FC8EAC;
+        background-color: #fbf187;
     }
 
     .navbar-brand {
-        color: white;
+        color: #000000;
     }
 </style>
 <body>
@@ -37,18 +37,18 @@
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Events/OpeningHours">Opening Hours</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Events/OpeningHours">Opening Hours</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Events/Index">Events</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Events/Index">Events</a>
                         </li>
                         @if (studentRepository.LoggedInStudent()?.isAdmin == true)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-page="/Events/AdminPage">Admin</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Events/AdminPage">Admin</a>
                             </li>
                         }
                     </ul>
@@ -56,7 +56,7 @@
                     {
                         <ul class="navbar-nav ml-right">
                             <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Students/Login">Login</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Students/Login">Login</a>
                         </li>
                         </ul>
                     }
