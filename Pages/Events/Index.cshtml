@@ -10,7 +10,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 
-
+    a{
+        color: black;
+    }
     .btn-search {
         background-color: #fbf187;
     }
@@ -88,7 +90,7 @@
                 {
                     <tr>
                         <td>
-                            <a asp-page="ViewEvent" asp-route-id="@item.Id"> @item.Name </a>
+                            <a asp-page="ViewEvent" asp-route-id="@item.Id"> @item.Name</a>
                         </td>
                         <td>@item.Location</td>
                         <td>"@item.Description"</td>
