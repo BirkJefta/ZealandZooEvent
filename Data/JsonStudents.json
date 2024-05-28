@@ -1,1 +1,47 @@
-[{"Id":1,"Name":"Admin","Password":"password","Email":"admin@admin.dk","Telephone":"0","isAdmin":true,"IdJoinedEvents":["72ed871a-6ca8-4746-b888-d293e808c037"]},{"Id":2,"Name":"Test","Password":"1234","Email":"test@gmail.com","Telephone":"1234 1234","isAdmin":false,"IdJoinedEvents":["72ed871a-6ca8-4746-b888-d293e808c037","69d9ed78-0656-4a69-84ec-ed11fd5faa27"]},{"Id":3,"Name":"test1","Password":"1111","Email":"test1@test.com","Telephone":"0","isAdmin":false,"IdJoinedEvents":null},{"Id":4,"Name":"test2","Password":"2222","Email":"test2@test2.com","Telephone":"2","isAdmin":false,"IdJoinedEvents":[]},{"Id":5,"Name":"test3","Password":"3333","Email":"test3@test3.com","Telephone":"3","isAdmin":false,"IdJoinedEvents":[]}]
+[
+  {
+    "Id": 1,
+    "Name": "Admin",
+    "Password": "password",
+    "Email": "admin@admin.dk",
+    "Telephone": "0",
+    "isAdmin": true,
+    "IdJoinedEvents": [ "72ed871a-6ca8-4746-b888-d293e808c037" ]
+  },
+  {
+    "Id": 2,
+    "Name": "Test",
+    "Password": "1234",
+    "Email": "test@gmail.com",
+    "Telephone": "1234 1234",
+    "isAdmin": false,
+    "IdJoinedEvents": [ "72ed871a-6ca8-4746-b888-d293e808c037", "69d9ed78-0656-4a69-84ec-ed11fd5faa27" ]
+  },
+  {
+    "Id": 3,
+    "Name": "test1",
+    "Password": "1111",
+    "Email": "test1@test.com",
+    "Telephone": "0",
+    "isAdmin": false,
+    "IdJoinedEvents": []
+  },
+  {
+    "Id": 4,
+    "Name": "test2",
+    "Password": "2222",
+    "Email": "test2@test2.com",
+    "Telephone": "2",
+    "isAdmin": false,
+    "IdJoinedEvents": []
+  },
+  {
+    "Id": 5,
+    "Name": "test3",
+    "Password": "3333",
+    "Email": "test3@test3.com",
+    "Telephone": "3",
+    "isAdmin": false,
+    "IdJoinedEvents": []
+  }
+]

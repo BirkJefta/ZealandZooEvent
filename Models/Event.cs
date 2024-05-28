@@ -14,7 +14,7 @@ namespace ZealandZooEvent.Models
         public double? Price { get; set; }
        
         [Display(Name = "Max Participants")]
-        [Range(0, 1000, ErrorMessage = "Value must be above {1}")]
+        [Range(0, 1000, ErrorMessage = "Value must be between {1} and {2}")]
         public int MaxParticipants { get; set; }
 
         public int CurrentParticipants { get; set; }
