@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     body {
-        color: #FC8EAC;
+        color: #ffffff;
         background-color: black;
     }
 
@@ -28,10 +28,23 @@
     .btn-tilmeld {
         background-color: #C2DAB8;
     }
+
+    .btn-edit {
+        background-color: #B8BC86;
+        color: black;
+    }
+
+    .profile-table {
+        margin-bottom: 30px;
+    }
+
+    .profile-table th, .profile-table td {
+        padding: 10px;
+    }
 </style>
 <header>
     <div class="row justify-content-center mt-2 mb-3">
-        <h1>Joined Events</h1>
+        <h1>Profile</h1>
     </div>
 </header>
 <body>
@@ -43,33 +56,48 @@
             </div>
         }
     </div>
-    <div class="container">
 
+    <!-- Student Information Section -->
+    <div class="container mt-5">
+        <h2>Profile Information</h2>
+        <table class="table profile-table">
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <td>@Model.student.Name</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>@Model.student.Email</td>
+                </tr>
+                <tr>
+                    <th>Telephone</th>
+                    <td>@Model.student.Telephone</td>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <td>@Model.student.Password</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a asp-page="/Students/Edit" asp-route-id="@Model.student.Id" class="btn btn-edit">Edit</a>
+        </div>
+    </div>
+
+    <!-- Joined Events Section -->
+    <div class="container mt-5">
+        <h2>Joined Events</h2>
         <table class="table">
             <thead>
                 <tr>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Location
-                    </th>
-                    <th>
-                        Description
-                    </th>
-                    <th>
-                        Date
-                    </th>
-                    <th>
-                        Time
-                    </th>
-                    <th style="text-align:right">
-                        Price
-                    </th>
-                    <th>
-                        Participants
-                    </th>
-               
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th style="text-align:right">Price</th>
+                    <th>Participants</th>
                 </tr>
             </thead>
             <tbody>
@@ -79,28 +107,15 @@
                         <td>
                             <a asp-page="ViewEvent" asp-route-id="@item.Id"> @item.Name </a>
                         </td>
-                        <td>
-                            @item.Location
-                        </td>
-                        <td>
-                            "@item.Description"
-                        </td>
-                        <td>
-                            @item.Time.ToString("dd-MM-yyyy")
-                        </td>
-                        <td>
-                            @item.Time.ToString("HH:mm")
-                        </td>
-                        <td style="text-align:right">
-                            @item.Price
-                        </td>
-                        <td>
-                            @item.CurrentParticipants/@item.MaxParticipants
-                        </td>
-                        
+                        <td>@item.Location</td>
+                        <td>@item.Description</td>
+                        <td>@item.Time.ToString("dd-MM-yyyy")</td>
+                        <td>@item.Time.ToString("HH:mm")</td>
+                        <td style="text-align:right">@item.Price</td>
+                        <td>@item.CurrentParticipants/@item.MaxParticipants</td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
-</body>   
+</body>
