@@ -41,6 +41,11 @@
                 <input asp-for="@Model.Event.Time" class="form-control" />
                 <span asp-validation-for="@Model.Event.Time" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="@Model.Event.MaxParticipants" class="control-label"></label>
+                <input asp-for="@Model.Event.MaxParticipants" class="form-control" />
+                <span asp-validation-for="@Model.Event.MaxParticipants" class="text-danger"></span>
+            </div>
 
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
