@@ -12,7 +12,7 @@ namespace ZealandZooEvent.Pages.Events
         [BindProperty]
         public Event Event { get; set; }
         public List<Event> Events { get; private set; }
-        [BindProperty] public string FilterCriteria { get; set; }
+        [BindProperty] public string FilterCriteria { get; set;}
         public AdminPageModel(IRepository repository) 
         {
             repo= repository;

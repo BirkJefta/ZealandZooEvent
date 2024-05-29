@@ -16,7 +16,6 @@ namespace ZealandZooEvent.Pages {
         [BindProperty]
         public List<Event> Events { get; set; }
 
-
         public IndexModel(ILogger<IndexModel> logger, IRepository repository)
         {
             _repository = repository;

@@ -6,9 +6,7 @@ namespace ZealandZooEvent.Interfaces {
     public interface IStudentRepository
     {
         List<Student> GetAllStudents();
-
         Student GetStudent(int id);
-
         void UpdateStudent(Student sdt);
         void AddStudent(Student student);
         void DeleteEventFromStudent(Guid id);

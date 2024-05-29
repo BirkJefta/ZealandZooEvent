@@ -11,7 +11,6 @@ public class FakeEventRepository : IRepository
 {
     private List<Event> events { get; }
     
-
     public FakeEventRepository()
     {
         events = new List<Event>();

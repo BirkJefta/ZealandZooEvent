@@ -22,7 +22,6 @@ public class DeleteEvent : PageModel
         studentRepository = _studentRepo;
     }
 
-
     public IActionResult OnGet(Guid id)
     {
         Event = repo.GetEvent(id);

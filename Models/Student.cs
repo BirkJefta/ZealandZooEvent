@@ -15,7 +15,6 @@ namespace ZealandZooEvent.Models
         public string Email { get; set; }
         [Phone]
         public string Telephone { get; set; }
-
         public bool isAdmin { get; set; }
         public List<Guid>IdJoinedEvents { get; set; } 
     }

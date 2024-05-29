@@ -12,7 +12,6 @@ namespace ZealandZooEvent.Pages.Events {
         {
             _logger = logger;
         }
-
         public void OnGet()
         {
         }

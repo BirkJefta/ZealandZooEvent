@@ -12,7 +12,6 @@ namespace ZealandZooEvent.Pages.Events
     public class IndexModel : PageModel
     {
         private readonly IRepository repo;
-
         public List<Event> Events { get; private set; }
         [BindProperty] public string FilterCriteria { get; set; }
         [BindProperty] public DateTime? StartDate { get; set; }

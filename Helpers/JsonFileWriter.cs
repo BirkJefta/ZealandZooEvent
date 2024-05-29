@@ -22,7 +22,6 @@ namespace ZealandZooEvent.Helpers {
 
             File.WriteAllText(jsonFileName, json);
                 
-
         }
     }
 }

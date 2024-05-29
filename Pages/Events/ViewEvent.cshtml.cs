@@ -22,6 +22,5 @@ namespace ZealandZooEvent.Pages.Events
             Event = repo.GetEvent(id);
             return Page();
         }
-
     }
 }
