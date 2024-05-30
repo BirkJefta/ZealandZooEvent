@@ -4,7 +4,6 @@
 @model ZealandZooEvent.Pages.Events.ViewEventModel
 @{
     ViewData["Title"] = "ViewEvent";
-    var eventId = RouteData.Values["Id"];
 }
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -47,12 +46,11 @@
                 @if (studentRepository.LoggedInStudent() != null){
                     <div class="container mt-6" style="margin-top:20px">
                         <div class="col-md-12 text-right">
-                            <a asp-page="/Students/JoinEvent" asp-route-id="@eventId">
+                            <a asp-page="/Students/JoinEvent" asp-route-id="@Model.Event.Id">
                                 <button class="btn-tilmeld btn-lg">
                                     Join
                                 </button>
                             </a>
-
                         </div>
                     </div>
                 }
