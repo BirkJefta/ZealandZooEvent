@@ -33,7 +33,7 @@
     "Email": "test2@test2.com",
     "Telephone": "2",
     "isAdmin": false,
-    "IdJoinedEvents": []
+    "IdJoinedEvents": [ "72ed871a-6ca8-4746-b888-d293e808c037"]
   },
   {
     "Id": 5,
